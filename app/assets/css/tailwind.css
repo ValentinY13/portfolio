@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@import "./base/default.css";
+
+@import "./components/button.css";
+@import "./components/heading.css";
+@import "./components/icon.css";
+@import "./components/input.css";
+@import "./components/layout.css";
+@import "./components/toast.css";
+@import "./components/link.css";
+
+@theme {
+    /*Colors*/
+    --color-*: initial;
+    --color-inherit: inherit;
+    --color-transparent: transparent;
+    --current: currentColor;
+
+    --color-white: oklch(1 0 89.876);
+    --color-blue-100: oklch(0.279 0.045 204.225);
+    --color-blue-200: oklch(0.669 0.115 191.08);
+
+    --color-yellow-300: oklch(0.865 0.175 92.534);
+
+    --color-spicy: oklch(0.754 0.086 47.546);
+    --color-mild: oklch(0.532 0.197 18.11);
+    --color-floral: oklch(0.8 0.096 169.838);
+    --color-citrusy: oklch(0.851 0.164 84.842);
+
+    --color-black-100: oklch(0.22 0.04 157.143);
+    --color-black: oklch(0 0 0);
+
+    --color-green-100: oklch(0.567 0.163 148.304);
+    --color-green-200: oklch(0.8 0.096 169.838);
+    --color-green-300: oklch(0.446 0.067 165.191);
+
+    --color-pink: oklch(0.751 0.156 8.655);
+
+    --color-red-100: oklch(0.511 0.116 31.05);
+    --color-red-200: oklch(0.35 0.195 29.234);
+    --color-red-300: oklch(0.475 0.195 29.234);
+    --color-red-400: oklch(0.37 0.137 15.239);
+
+    --color-grey-100: oklch(0.722 0 89.876);
+    --color-grey-300: oklch(0.39 0 89.876);
+    --color-grey-500: oklch(0.256 0 89.876);
+
+    --shadow-fluid-color: 0 25px 50px -18px var(--theme-fluid-color);
+
+    /*font-family*/
+    --font-bricolage-grotesque: 'Bricolage Grotesque', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+
+    /* Breakpoints */
+    --breakpoint-xs: 23.4375rem;
+
+    /* Size utility */
+    --spacing-fluid-9: clamp(9rem, calc(144 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+
+    --text-fluid-32px: clamp(2rem, calc(32 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+    --text-fluid-2xl: clamp(1.5rem, calc(24 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+    --text-fluid-xl: clamp(1.25rem, calc(20 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+    --text-fluid-lg: clamp(1.125rem, calc(18 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+    --text-fluid-base: clamp(1rem, calc(16 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+    --text-fluid-sm: clamp(0.875rem, calc(14 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+    --text-fluid-xs: clamp(0.75rem, calc(12 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
+}
+
+:root {
+    --tw-scale: 1;
+    --tw-max-w-screen: 100vw;
+    --tw-breakpoint-sm: 640;
+    --tw-breakpoint-md: 768;
+    --tw-breakpoint-lg: 1024;
+    --tw-breakpoint-xl: 1280;
+    --tw-breakpoint-2xl: 1536;
+}

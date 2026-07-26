@@ -1,0 +1,15 @@
+@layer components {
+    .link-decoration {
+        --_decoration-color: var(--theme-fluid-color);
+
+        background: linear-gradient(to bottom, var(--_decoration-color) 0%, var(--_decoration-color) 100%) no-repeat bottom;
+        background-size: 100% 2px;
+        @apply transition-[background] duration-200 ease-in-out;
+    }
+
+    a.link-decoration, .link-decoration.hoverable {
+        @variant hover {
+            background-size: 100% 100%;
+        }
+    }
+}

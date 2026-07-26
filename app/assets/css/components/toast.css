@@ -1,0 +1,9 @@
+.Toastify__toast-theme--colored {
+    --toastify-color-success: var(--color-floral);
+    --toastify-color-error: var(--color-red-400);
+    --toastify-text-color-error: var(--color-pink);
+    --toastify-text-color-success: var(--color-green-300);
+
+    --toastify-color-progress-success: var(--color-green-300);
+    --toastify-color-progress-error: var(--color-pink);
+}

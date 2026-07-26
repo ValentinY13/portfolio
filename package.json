@@ -1,0 +1,54 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "cm": "cz",
+    "semantic-release": "semantic-release",
+    "commitlint": "commitlint --edit"
+  },
+  "dependencies": {
+    "@nuxt/image": "^2.0.0",
+    "@nuxtjs/seo": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "@vee-validate/nuxt": "^4.15.1",
+    "@vee-validate/zod": "^4.15.1",
+    "@vueuse/core": "^14.3.0",
+    "@vueuse/nuxt": "^14.3.0",
+    "@vueuse/router": "^14.3.0",
+    "gsap": "^3.15.0",
+    "nuxt": "^4.5.0",
+    "swiper": "^12.2.0",
+    "vue": "^3.5.40",
+    "vue-recaptcha-v3": "^2.0.1",
+    "vue-router": "^5.2.0",
+    "vue3-toastify": "^0.2.9",
+    "zod": "^4.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "packageManager": "yarn@4.10.3",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@types/qs": "^6.15.1",
+    "@types/three": "^0.184.1",
+    "commitizen": "^4.3.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
+    "semantic-release": "^24.2.9"
+  }
+}

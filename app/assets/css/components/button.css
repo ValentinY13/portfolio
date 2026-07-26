@@ -1,0 +1,106 @@
+.btn,
+.btn-icon {
+    --_background-color: var(--background-color, var(--color-white));
+    --_color: var(--color, var(--color-blue-100));
+
+    --_hover-background-color: var(--hover-background-color, var(--color-transparent));
+    --_hover-color: var(--hover-color, var(--color-white));
+
+    --_icon-color: var(--icon-color, var(--color-white));
+    --_hover-icon-color: var(--theme-fluid-color, var(--color-white));
+
+    cursor: pointer;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: .5;
+    }
+
+    .icon {
+        @apply grow-0 shrink-0 text-(--_icon-color) w-7 h-4.5;
+    }
+
+
+    @variant hover {
+        .icon {
+            @apply text-(--_hover-icon-color) transition-colors duration-500 ease-in-out;
+        }
+    }
+
+    @apply text-(--_color) bg-(--_background-color) font-semibold inline-flex items-center justify-center gap-4 rounded-full text-sm leading-normal;
+
+    @apply transition duration-500 ease-in-out;
+    @apply backdrop-blur-[100px] hover:scale-105;
+    @apply hover:text-(--_hover-color) hover:bg-(--_hover-background-color);
+    @apply group-hover/btn:scale-105 group-hover/btn:text-(--_hover-color) group-hover/btn:bg-(--_hover-background-color);
+}
+
+.btn:not(.btn--gintlemen, [class*="btn--size"]) {
+    @apply px-6 py-2;
+}
+
+.btn.btn--gintlemen {
+    @apply pl-6 pr-2 py-2;
+}
+
+.btn--size-small {
+    @apply px-2 py-1 text-xs;
+
+    &:not(.btn--no-hover) {
+        @variant hover {
+            .icon {
+                @apply translate-x-2;
+            }
+        }
+    }
+}
+
+.btn--size-icon {
+    @apply p-2;
+
+    .icon {
+        @apply size-4.5;
+    }
+}
+
+.btn--size-medium {
+    @apply px-4 py-2 font-normal;
+}
+
+.btn--with-border {
+    --_border-color: var(--border-color, var(--color-white));
+    --_border-color-hover: var(--border-color-hover, var(--color-white));
+
+    @apply border border-(--_border-color);
+
+    &:not(.btn--no-hover) {
+        @apply hover:ring-1 hover:ring-(--_border-color-hover) hover:border-(--_border-color-hover);
+        @apply group-hover/btn:ring-1 group-hover/btn:ring-(--_border-color-hover) group-hover/btn:border-(--_border-color-hover);
+    }
+}
+
+.btn--white {
+    --background-color: var(--color-white);
+    --color: var(--color-blue-100);
+
+    /*--hover-background-color: --alpha(var(--color-blue-100) / 50%);*/
+    --hover-background-color: --alpha(var(--theme-bg-color) / 50%);
+
+    --hover-color: var(--color-white);
+
+    --icon-color: var(--theme-fluid-color);
+    --hover-icon-color: var(--color-white);
+}
+
+.btn--blue {
+    --background-color: var(--theme-fluid-color);
+    --color: var(--theme-bg-color);
+
+    --hover-background-color: --alpha(var(--theme-bg-color) / 50%);
+
+    --hover-color: var(--color-white);
+
+    --border-color: var(--theme-fluid-color);
+    --border-color-hover: var(--color-white);
+}
+

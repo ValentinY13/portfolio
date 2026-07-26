@@ -1,0 +1,38 @@
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6,
+.big-title {
+    @apply font-bricolage-grotesque;
+    line-height: 120%;
+}
+
+.text-h1 {
+    font-size: 2rem;
+    @apply xl:text-[48px];
+}
+
+.text-h2 {
+    font-size: 1.5rem;
+    @apply xl:text-[32px];
+}
+
+.text-h3 {
+    font-size: 1.125rem;
+    @apply xl:text-[24px];
+}
+
+.text-h4 {
+    font-size: 1.125rem;
+}
+
+.text-h5 {
+    font-size: 1.5rem;
+}
+
+.big-title {
+    font-size: 2rem;
+    @apply md:text-[40px] xl:text-[56px];
+}

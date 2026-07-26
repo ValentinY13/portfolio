@@ -1,0 +1,35 @@
+.responsive-layout {
+    @apply mx-auto w-full xl:max-w-350;
+}
+
+.responsive-padding-x {
+    @apply px-6 sm:px-12 xl:px-36;
+}
+
+.responsive-padding-y {
+    @apply py-24;
+}
+
+.responsive-padding-t {
+    @apply pt-24;
+}
+
+.responsive-padding-b {
+    @apply pb-24;
+}
+
+.responsive-padding-y--large {
+    @apply py-24 xl:py-48;
+}
+
+.responsive-padding-t--large {
+    @apply pt-24 xl:pt-48;
+}
+
+.responsive-padding-b--large {
+    @apply pb-24 xl:pb-48;
+}
+
+.responsive-menu-padding-t {
+    @apply pt-24 md:pt-32 xl:pt-40;
+}
