@@ -1,106 +1,115 @@
-.btn,
-.btn-icon {
-    --_background-color: var(--background-color, var(--color-white));
-    --_color: var(--color, var(--color-blue-100));
-
-    --_hover-background-color: var(--hover-background-color, var(--color-transparent));
-    --_hover-color: var(--hover-color, var(--color-white));
-
-    --_icon-color: var(--icon-color, var(--color-white));
-    --_hover-icon-color: var(--theme-fluid-color, var(--color-white));
-
+/* Base button style */
+.btn {
+    position: relative;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-inter);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    outline: none;
+    overflow: hidden;
 
     &:disabled {
         cursor: not-allowed;
-        opacity: .5;
+        opacity: 0.5;
     }
 
-    .icon {
-        @apply grow-0 shrink-0 text-(--_icon-color) w-7 h-4.5;
+    &:not(.btn--size-small, .btn--size-icon) {
+        @apply px-8 py-2;
     }
 
-
-    @variant hover {
-        .icon {
-            @apply text-(--_hover-icon-color) transition-colors duration-500 ease-in-out;
-        }
-    }
-
-    @apply text-(--_color) bg-(--_background-color) font-semibold inline-flex items-center justify-center gap-4 rounded-full text-sm leading-normal;
-
-    @apply transition duration-500 ease-in-out;
-    @apply backdrop-blur-[100px] hover:scale-105;
-    @apply hover:text-(--_hover-color) hover:bg-(--_hover-background-color);
-    @apply group-hover/btn:scale-105 group-hover/btn:text-(--_hover-color) group-hover/btn:bg-(--_hover-background-color);
-}
-
-.btn:not(.btn--gintlemen, [class*="btn--size"]) {
-    @apply px-6 py-2;
-}
-
-.btn.btn--gintlemen {
-    @apply pl-6 pr-2 py-2;
-}
-
-.btn--size-small {
-    @apply px-2 py-1 text-xs;
-
-    &:not(.btn--no-hover) {
-        @variant hover {
-            .icon {
-                @apply translate-x-2;
-            }
-        }
+    &.btn--size-small {
+        @apply px-4 py-2 text-xs;
     }
 }
 
-.btn--size-icon {
-    @apply p-2;
+/* Variante Glowing */
+.btn--glowing {
+    background: var(--color-black-100);
+    color: var(--color-white-100);
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 
-    .icon {
-        @apply size-4.5;
+    &:hover {
+        box-shadow: 0 0 30px oklch(from var(--color-accent) l c h / 0.15);
+        transform: translateY(-1px);
+    }
+
+    /* Bordure tournante via pseudo-élément ou conteneur interne */
+    .btn-border-container {
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        border-radius: inherit;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    .conic-glow {
+        position: absolute;
+        inset: -100%;
+        background: conic-gradient(
+                from var(--angle),
+                transparent 0deg,
+                var(--color-accent) 60deg,
+                transparent 120deg
+        );
+        animation: rotate 4s linear infinite;
     }
 }
 
-.btn--size-medium {
-    @apply px-4 py-2 font-normal;
-}
+/* Variante Ghost (Secondaire) */
+.btn--ghost {
+    background: transparent;
+    color: var(--color-white-100);
+    border: 1px solid oklch(from var(--color-white) l c h / 0.2);
+    backdrop-filter: blur(4px);
 
-.btn--with-border {
-    --_border-color: var(--border-color, var(--color-white));
-    --_border-color-hover: var(--border-color-hover, var(--color-white));
+    &:hover {
+        color: var(--color-white-100);
+        border-color: oklch(from var(--color-accent) l c h / 0.5);
+        background: oklch(from var(--color-accent) l c h / 0.05);
+    }
 
-    @apply border border-(--_border-color);
+    &::before {
+        content: '[';
+        margin-right: -0.25rem;
+        opacity: 0;
+        transform: translateX(-4px);
+        transition: all 0.3s ease;
+        color: var(--color-accent);
+        font-family: var(--font-jetbrains-mono);
+    }
 
-    &:not(.btn--no-hover) {
-        @apply hover:ring-1 hover:ring-(--_border-color-hover) hover:border-(--_border-color-hover);
-        @apply group-hover/btn:ring-1 group-hover/btn:ring-(--_border-color-hover) group-hover/btn:border-(--_border-color-hover);
+    &::after {
+        content: ']';
+        margin-left: -0.25rem;
+        opacity: 0;
+        transform: translateX(4px);
+        transition: all 0.3s ease;
+        color: var(--color-accent);
+        font-family: var(--font-jetbrains-mono);
+    }
+
+    &:hover::before,
+    &:hover::after {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
-.btn--white {
-    --background-color: var(--color-white);
-    --color: var(--color-blue-100);
-
-    /*--hover-background-color: --alpha(var(--color-blue-100) / 50%);*/
-    --hover-background-color: --alpha(var(--theme-bg-color) / 50%);
-
-    --hover-color: var(--color-white);
-
-    --icon-color: var(--theme-fluid-color);
-    --hover-icon-color: var(--color-white);
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
 }
 
-.btn--blue {
-    --background-color: var(--theme-fluid-color);
-    --color: var(--theme-bg-color);
-
-    --hover-background-color: --alpha(var(--theme-bg-color) / 50%);
-
-    --hover-color: var(--color-white);
-
-    --border-color: var(--theme-fluid-color);
-    --border-color-hover: var(--color-white);
+@keyframes rotate {
+    from { --angle: 0deg; }
+    to { --angle: 360deg; }
 }
-
