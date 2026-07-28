@@ -18,7 +18,6 @@ onMounted(() => {
     if (prefersReducedMotion) {
       gsap.set('.animate-item', { opacity: 1, y: 0 })
       gsap.set('.split-word', { opacity: 1, y: 0 })
-      // En reduced-motion, on affiche juste la 1ère commande, statique, sans boucle
       const el = document.querySelector('.typing-text')
       if (el) el.textContent = commands[0]
       return

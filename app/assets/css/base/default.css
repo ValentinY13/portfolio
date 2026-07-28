@@ -27,7 +27,8 @@
                 linear-gradient(to bottom, oklch(0.705 0.169 153.567 / 0.15) 1px, transparent 1px);
         background-size: 40px 40px;
         background-attachment: fixed;
-        /* On masque cette grille lumineuse partout sauf autour de la souris */
+
+        /* Spotlight */
         mask-image: radial-gradient(
                 circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
                 black 0%,

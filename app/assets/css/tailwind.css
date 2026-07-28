@@ -5,7 +5,6 @@
 @import "./components/button.css";
 @import "./components/heading.css";
 @import "./components/icon.css";
-@import "./components/input.css";
 @import "./components/layout.css";
 @import "./components/toast.css";
 @import "./components/link.css";
@@ -36,28 +35,4 @@
     --font-space-grotesk: 'Space Grotesk', sans-serif;
     --font-inter: 'Inter', sans-serif;
     --font-jetbrains-mono: 'JetBrains Mono', monospace;
-
-    /* Breakpoints */
-    --breakpoint-xs: 23.4375rem;
-
-    /* Size utility */
-    --spacing-fluid-9: clamp(9rem, calc(144 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-
-    --text-fluid-32px: clamp(2rem, calc(32 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-    --text-fluid-2xl: clamp(1.5rem, calc(24 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-    --text-fluid-xl: clamp(1.25rem, calc(20 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-    --text-fluid-lg: clamp(1.125rem, calc(18 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-    --text-fluid-base: clamp(1rem, calc(16 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-    --text-fluid-sm: clamp(0.875rem, calc(14 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-    --text-fluid-xs: clamp(0.75rem, calc(12 / var(--tw-breakpoint-2xl) * 100vw), var(--tw-max-w-screen));
-}
-
-:root {
-    --tw-scale: 1;
-    --tw-max-w-screen: 100vw;
-    --tw-breakpoint-sm: 640;
-    --tw-breakpoint-md: 768;
-    --tw-breakpoint-lg: 1024;
-    --tw-breakpoint-xl: 1280;
-    --tw-breakpoint-2xl: 1536;
 }
