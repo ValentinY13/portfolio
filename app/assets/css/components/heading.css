@@ -5,7 +5,7 @@
 .text-h5,
 .text-h6,
 .big-title {
-    @apply font-bricolage-grotesque;
+    @apply font-space-grotesk;
     line-height: 120%;
 }
 

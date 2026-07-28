@@ -28,4 +28,8 @@ export default defineNuxtConfig({
     compilerOptions: {
       isCustomElement: (tag: string) => tag.startsWith('swiper') || tag.startsWith('mux-'),        },
   },
+
+  ogImage: {
+    enabled: false
+  },
 })
