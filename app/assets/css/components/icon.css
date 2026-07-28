@@ -21,3 +21,13 @@
     width: 1em;
     height: 1em;
 }
+
+.icon-nuxt {
+    mask: url('/svg/technos/nuxt.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+
+    width: 1em;
+    height: 1em;
+}

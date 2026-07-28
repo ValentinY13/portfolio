@@ -2,7 +2,7 @@
 import type { RouteLocationRaw } from "#vue-router";
 
 const {theme = 'glowing', to, size, icon, disabled} = defineProps<{
-  theme?: 'glowing' | 'ghost' | 'terminal'
+  theme?: 'glowing' | 'ghost'
   to?: RouteLocationRaw
   size?: 'small'
   icon?: string
@@ -84,7 +84,7 @@ onMounted(() => {
     <!-- Contenu du bouton -->
     <span class="relative z-20 flex items-center gap-2">
       <slot />
-      <i v-if="icon" :class="`icon-${icon}`" class="relative z-20" />
+      <i v-if="icon" :class="`icon icon-${icon}`" class="relative z-20" />
     </span>
 
     <template v-if="theme === 'terminal'">
