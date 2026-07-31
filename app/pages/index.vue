@@ -131,10 +131,35 @@ const technos = [
   {src: "/svg/technos/github.svg", alt: "github"},
   {src: "/svg/technos/figma.svg", alt: "figma"},
 ]
+
+const projects = [
+  {
+    title: "Maison Rorive",
+    description: "Une plateforme B2B conçue pour simplifier la gestion d’un catalogue de plusieurs milliers de références, avec filtres avancés et intégration en temps réel de l’ERP Mercator.",
+    tags: [
+      { name: "Nuxt", theme: "accent" } as const,
+      { name: "ERP Mercator", theme: "accent" } as const,
+      { name: "Directus", theme: "white" } as const
+    ],
+    image: "/img/projects/maison-rorive-preview.jpg",
+    link: "/projets/projet-1"
+  },
+  {
+    title: "Intégration Mux dans Directus",
+    description: "Une extension Directus développée de bout en bout pour intégrer Mux, permettant d’uploader, gérer et paramétrer des vidéos sans les stocker sur le serveur.",
+    tags: [
+      { name: "Directus", theme: "accent" } as const,
+      { name: "Mux", theme: "white" } as const,
+      { name: "Intégration custom", theme: "white" } as const
+    ],
+    image: "/img/projects/mux-directus.jpg",
+    link: "/projets/projet-2"
+  }
+]
 </script>
 
 <template>
-  <div ref="containerRef">
+  <main ref="containerRef">
     <!-- HERO SECTION -->
     <section aria-labelledby="hero" class="responsive-padding-x responsive-padding-t--large responsive-padding-b">
       <div class="responsive-layout grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 md:gap-8">
@@ -151,7 +176,7 @@ const technos = [
           </p>
 
           <!-- Titre principal -->
-          <h1 v-split-text class="animate-item font-space-grotesk font-semibold text-h1 text-white-100 mb-6">
+          <h1 v-split-text id="hero" class="animate-item font-space-grotesk font-semibold text-h1 text-white-100 mb-6">
             Développeur full-stack — Nuxt / Directus
           </h1>
 
@@ -178,18 +203,25 @@ const technos = [
     <LayoutTechnos class="reveal-section responsive-padding-y" :items="technos" />
 
     <!-- SKILLS SECTION (Transversales) -->
-    <section class="reveal-section responsive-padding-x responsive-padding-y">
+    <section aria-labelledby="transversal-skills" class="reveal-section responsive-padding-x responsive-padding-y">
       <div class="responsive-layout">
-        <h2 class="reveal-item text-h2 text-white-100 mb-16">Expertise transversale</h2>
+        <h2 id="transversal-skills" class="reveal-item text-h2 text-white-100 mb-16">Expertise transversale</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="skill in transversalSkills" :key="skill.id" class="reveal-item p-8 rounded-xl border border-white/5 bg-white/[0.02] hover:border-accent/30 transition-colors group">
-            <span class="block font-jetbrains-mono text-accent text-sm mb-4">{{ skill.id }}</span>
-            <h3 class="text-h3 text-white-100 mb-4 group-hover:text-accent transition-colors">{{ skill.title }}</h3>
-            <p class="text-grey-100 mb-6 leading-relaxed">{{ skill.description }}</p>
+          <div v-for="item in transversalSkills" :key="item.id" class="reveal-item p-8 rounded-xl border border-white/5 bg-white/2 hover:border-accent/30 transition-colors group">
+
+            <span class="block font-jetbrains-mono text-accent text-sm mb-4">{{ item.id }}</span>
+            <h3 class="text-h3 text-white-100 mb-4 group-hover:text-accent transition-colors">{{ item.title }}</h3>
+            <p class="text-grey-100 mb-6 leading-relaxed">{{ item.description }}</p>
             <div class="flex flex-wrap gap-2">
-              <span v-for="kw in skill.keywords" :key="kw" class="text-[10px] font-jetbrains-mono uppercase tracking-wider text-grey-300 px-2 py-1 border border-white/10 rounded">
-                {{ kw }}
-              </span>
+              <Chip
+                  v-for="kw in item.keywords"
+                  :key="kw"
+                  class="tracking-wider"
+                  uppercase
+                  hoverable
+                  with-border>
+                {{kw}}
+              </Chip>
             </div>
           </div>
         </div>
@@ -208,19 +240,37 @@ const technos = [
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div v-for="i in 2" :key="i" class="reveal-item aspect-video rounded-xl border border-white/10 bg-black-100 overflow-hidden group relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-            <div class="absolute bottom-0 left-0 p-8 w-full">
+          <article
+              v-for="project in projects"
+              :key="project.title"
+              class="reveal-item aspect-video rounded-xl border border-white/10 bg-black-100 overflow-hidden group relative"
+          >
+
+            <nuxt-picture :src="project.image" :alt="project.title" :img-attrs="{ class: 'size-full object-cover aspect-video' }" />
+
+            <div class="absolute inset-0 z-10 bg-linear-to-t from-black via-black/60 to-transparent opacity-100 group-hover:opacity-80 transition-opacity duration-300">
+            </div>
+
+            <div class="absolute bottom-0 left-0 p-8 w-full z-20">
               <div class="flex gap-2 mb-3">
-                <span class="text-[10px] font-jetbrains-mono bg-accent/20 text-accent px-2 py-0.5 rounded">Nuxt</span>
-                <span class="text-[10px] font-jetbrains-mono bg-white/10 text-white-100 px-2 py-0.5 rounded">Directus</span>
+                <Chip
+                    v-for="tag in project.tags"
+                    :key="tag.name"
+                    :theme="tag.theme"
+                    variant="tonal"
+                    with-border
+                >
+                  {{ tag.name }}
+                </Chip>
               </div>
-              <h3 class="text-h3 text-white-100 mb-2">Projet en cours #{{ i }}</h3>
+              <h3 class="text-h3 text-white-100 mb-2">{{ project.title }}</h3>
               <p class="text-sm text-grey-100 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                Aperçu détaillé de l'architecture et des fonctionnalités clés.
+                {{ project.description }}
               </p>
             </div>
-          </div>
+
+            <nuxt-link class="absolute inset-0 z-30" :aria-label="'Voir le projet ' + project.title" />
+          </article>
         </div>
       </div>
     </section>
@@ -234,20 +284,16 @@ const technos = [
         <p class="reveal-item text-lg text-grey-100 max-w-160 mx-auto mb-12">
           Vous avez un projet complexe ou besoin d'une expertise technique pour passer de l'idée à la production ? Parlons-en.
         </p>
-        <div class="reveal-item flex justify-center gap-4">
+        <div class="reveal-item text-center">
           <AppButton theme="glowing" size="small" icon="arrow-right">Démarrer une conversation</AppButton>
         </div>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <style scoped>
 .reveal-item {
   will-change: transform, opacity;
-}
-
-.tech-marquee-container {
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 </style>
