@@ -17,7 +17,7 @@ initSpotlight()
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-black-100">
+  <div class="relative min-h-screen overflow-x-clip bg-black-100">
     <NuxtLayout>
       <NuxtPage />
 
