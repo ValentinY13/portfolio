@@ -115,6 +115,7 @@ onMounted(() => {
           <nuxt-link to="/projets" aria-label="Projets" class="hover:text-accent transition-colors">projets</nuxt-link>
           <span aria-hidden="true">/</span>
           <span class="text-accent truncate max-w-[16rem] md:max-w-none">{{ route.params.slug }}</span>
+          <span class="text-accent animate-pulse" aria-hidden="true">_</span>
         </nav>
 
         <h1 class="text-h1 font-semibold mb-4 text-white-100">
@@ -125,14 +126,14 @@ onMounted(() => {
           {{ project.tldr }}
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <dl class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h2 class="text-xs uppercase tracking-widest text-white-100 mb-2">Type</h2>
-            <p class="text-white-100 font-inter">{{ project.type }}</p>
+            <dt class="text-xs uppercase tracking-widest text-white-100 mb-2">Type</dt>
+            <dd class="text-white-100 font-inter">{{ project.type }}</dd>
           </div>
           <div class="md:col-span-2">
-            <h2 class="text-xs uppercase tracking-widest text-white-100 mb-2">Stack Technique</h2>
-            <div class="flex flex-wrap gap-2">
+            <dt class="text-xs uppercase tracking-widest text-white-100 mb-2">Stack Technique</dt>
+            <dd class="flex flex-wrap gap-2">
               <Chip
                   v-for="item in project.stack"
                   :key="item.name"
@@ -141,9 +142,9 @@ onMounted(() => {
                   with-border>
                 {{ item.name }}
               </Chip>
-            </div>
+            </dd>
           </div>
-        </div>
+        </dl>
       </div>
     </header>
 
@@ -168,14 +169,14 @@ onMounted(() => {
               <span class="w-8 h-px bg-accent/30" aria-hidden="true" />
               {{ section.title }}
             </h2>
-            <ul class="feature-list space-y-6">
+            <ol class="feature-list space-y-6">
               <li v-for="(item, idx) in section.items" :key="idx" class="flex gap-4 group">
                 <span class="text-accent font-jetbrains-mono text-sm mt-1 opacity-50 group-hover:opacity-100 transition-opacity tabular-nums">
                   {{ String(idx + 1).padStart(2, '0') }}.
                 </span>
                 <p class="text-grey-100 leading-relaxed font-inter">{{ item }}</p>
               </li>
-            </ul>
+            </ol>
           </section>
 
           <!-- Gallery -->
@@ -189,6 +190,7 @@ onMounted(() => {
                       <nuxt-picture
                           :src="img.src"
                           :alt="img.alt"
+                          loading="lazy"
                           class="block rounded-xl overflow-hidden border border-white/10"
                           :img-attrs="{ class: 'size-full object-cover group-hover:scale-105 transition-transform duration-700' }" />
                     </div>
@@ -213,16 +215,16 @@ onMounted(() => {
           <!-- Challenge & Outcome -->
           <section class="reveal-on-scroll p-8 md:p-12 rounded-2xl bg-white/3 border border-white/5 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-accent/5 blur-3xl -mr-32 -mt-32 rounded-full pointer-events-none" aria-hidden="true" />
-            <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <dl class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <h2 class="text-h3 mb-4 text-white-100">Le défi</h2>
-                <p class="text-grey-100 leading-relaxed font-inter">{{ project.results.challenge }}</p>
+                <dt class="text-h3 mb-4 text-white-100">Le défi</dt>
+                <dd class="text-grey-100 leading-relaxed font-inter">{{ project.results.challenge }}</dd>
               </div>
               <div>
-                <h2 class="text-h3 mb-4 text-white-100">Résultat</h2>
-                <p class="text-accent leading-relaxed font-inter">{{ project.results.outcome }}</p>
+                <dt class="text-h3 mb-4 text-white-100">Résultat</dt>
+                <dd class="text-accent leading-relaxed font-inter">{{ project.results.outcome }}</dd>
               </div>
-            </div>
+            </dl>
           </section>
         </article>
 
