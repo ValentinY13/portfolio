@@ -9,7 +9,7 @@ interface Project {
   stack: string[]
   status: 'Production' | 'Internal' | 'In Progress' | 'MVP'
   date: string
-  preview?: string // chemin vers un visuel : /images/projects/xxx.png
+  preview?: string
 }
 
 const projects: Project[] = [
@@ -24,7 +24,7 @@ const projects: Project[] = [
     preview: '/images/projects/maison-rorive.png'
   },
   {
-    slug: 'mux-directus',
+    slug: 'mux-extension',
     name: 'Extension Mux Directus',
     type: 'Backend Extension',
     description: 'Intégration native de la gestion vidéo Mux au sein du CMS Directus, simplifiant le workflow de streaming.',
@@ -179,7 +179,7 @@ const onListMouseMove = (e: MouseEvent) => {
         <NuxtLink
             v-for="(project, index) in projects"
             :key="project.slug"
-            :to="`/projets/${project.slug}`"
+            :to="{name: 'projets-slug', params: { slug: project.slug }}"
             class="project-row group relative grid grid-cols-[auto_1fr_auto] md:grid-cols-[3rem_1fr_auto_6rem] items-center gap-x-6 gap-y-3 py-8 px-4 -mx-4 border-b border-white/10 transition-colors duration-300 hover:bg-white/[0.03]"
             @mouseenter="onRowEnter(project)"
             @mouseleave="onRowLeave"

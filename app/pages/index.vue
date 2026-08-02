@@ -7,15 +7,14 @@ const commands = [
   "$ npm info valentin-yerna"
 ]
 
-const techs = [
-  { name: 'Nuxt', icon: 'nuxt' },
-  { name: 'Vue', icon: 'vue' },
-  { name: 'Directus', icon: 'directus' },
-  { name: 'Gsap', icon: 'gsap' },
-  { name: 'Docker', icon: 'docker' },
-  { name: 'Git', icon: 'git' },
-  { name: 'Mysql', icon: 'mysql' },
-  { name: 'Figma', icon: 'figma' }
+const technos = [
+  {src: "/svg/technos/nuxt.svg", alt: "nuxt"},
+  {src: "/svg/technos/directus.svg", alt: "directus"},
+  {src: "/svg/technos/tailwind.svg", alt: "tailwind"},
+  {src: "/svg/technos/gsap.svg", alt: "gsap"},
+  {src: "/svg/technos/docker.svg", alt: "docker"},
+  {src: "/svg/technos/github.svg", alt: "github"},
+  {src: "/svg/technos/figma.svg", alt: "figma"},
 ]
 
 const transversalSkills = [
@@ -48,6 +47,33 @@ const transversalSkills = [
     title: 'Fiabilité et maintenance',
     description: 'Suivi rigoureux des dépendances et montée en version maîtrisée.',
     keywords: ['dépendances', 'montée de version']
+  }
+]
+
+const projects = [
+  {
+    id: "01",
+    title: "Maison Rorive",
+    description: "Une plateforme B2B conçue pour simplifier la gestion d’un catalogue de plusieurs milliers de références, avec filtres avancés et intégration en temps réel de l’ERP Mercator.",
+    tags: [
+      { name: "Nuxt", theme: "accent" } as const,
+      { name: "ERP Mercator", theme: "accent" } as const,
+      { name: "Directus", theme: "white" } as const
+    ],
+    image: "/img/projects/maison-rorive-preview.jpg",
+    to: {name: 'projets-slug', params: {slug: 'maison-rorive'}}
+  },
+  {
+    id: "02",
+    title: "Intégration Mux dans Directus",
+    description: "Une extension Directus développée de bout en bout pour intégrer Mux, permettant d’uploader, gérer et paramétrer des vidéos sans les stocker sur le serveur.",
+    tags: [
+      { name: "Directus", theme: "accent" } as const,
+      { name: "Mux", theme: "white" } as const,
+      { name: "Intégration custom", theme: "white" } as const
+    ],
+    image: "/img/projects/mux-directus.jpg",
+    to: {name: 'projets-slug', params: {slug: 'mux-extension'}}
   }
 ]
 
@@ -124,47 +150,10 @@ onMounted(() => {
     })
   })
 })
-
-const technos = [
-  {src: "/svg/technos/nuxt.svg", alt: "nuxt"},
-  {src: "/svg/technos/directus.svg", alt: "directus"},
-  {src: "/svg/technos/tailwind.svg", alt: "tailwind"},
-  {src: "/svg/technos/gsap.svg", alt: "gsap"},
-  {src: "/svg/technos/docker.svg", alt: "docker"},
-  {src: "/svg/technos/github.svg", alt: "github"},
-  {src: "/svg/technos/figma.svg", alt: "figma"},
-]
-
-const projects = [
-  {
-    id: "01",
-    title: "Maison Rorive",
-    description: "Une plateforme B2B conçue pour simplifier la gestion d’un catalogue de plusieurs milliers de références, avec filtres avancés et intégration en temps réel de l’ERP Mercator.",
-    tags: [
-      { name: "Nuxt", theme: "accent" } as const,
-      { name: "ERP Mercator", theme: "accent" } as const,
-      { name: "Directus", theme: "white" } as const
-    ],
-    image: "/img/projects/maison-rorive-preview.jpg",
-    slug: "projet-1"
-  },
-  {
-    id: "02",
-    title: "Intégration Mux dans Directus",
-    description: "Une extension Directus développée de bout en bout pour intégrer Mux, permettant d’uploader, gérer et paramétrer des vidéos sans les stocker sur le serveur.",
-    tags: [
-      { name: "Directus", theme: "accent" } as const,
-      { name: "Mux", theme: "white" } as const,
-      { name: "Intégration custom", theme: "white" } as const
-    ],
-    image: "/img/projects/mux-directus.jpg",
-    slug: "mux-extension"
-  }
-]
 </script>
 
 <template>
-  <main ref="containerRef">
+  <main ref="containerRef" class="relative z-10">
     <!-- HERO SECTION -->
     <section aria-labelledby="hero" class="responsive-padding-x responsive-padding-t--large responsive-padding-b">
       <div class="responsive-layout grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 md:gap-8">
@@ -241,13 +230,13 @@ const projects = [
             <h2 id="projects-preview" class="text-h2 text-white-100 mb-4">Réalisations</h2>
             <p class="text-grey-100 max-w-120">Une sélection de projets mettant en œuvre des architectures complexes et des interfaces soignées.</p>
           </div>
-          <AppButton theme="ghost" icon="arrow-right" size="small">Tous les projets</AppButton>
+          <AppButton to="/projets" title="Tous les projets" theme="ghost" icon="arrow-right" size="small">Tous les projets</AppButton>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <article
               v-for="project in projects"
-              :key="project.slug"
+              :key="project.id"
               class="reveal-item aspect-video rounded-xl border border-white/10 bg-black-100 overflow-hidden group relative hover:border-accent/30 transition-colors duration-300"
           >
             <nuxt-picture
@@ -283,7 +272,7 @@ const projects = [
               </p>
             </div>
 
-            <nuxt-link :to="`/projets/${project.slug}`" class="absolute inset-0 z-30" :aria-label="`Voir le projet ${project.title}`" />
+            <nuxt-link :to="project.to" class="absolute inset-0 z-30" :aria-label="`Voir le projet ${project.title}`" />
           </article>
         </div>
       </div>

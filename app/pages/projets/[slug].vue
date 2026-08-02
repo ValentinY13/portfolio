@@ -2,92 +2,41 @@
 const { createCtx, gsap } = useGsap()
 const route = useRoute()
 
-// ─────────────────────────────────────────────
-// Données de l'étude de cas
-// ─────────────────────────────────────────────
-interface ProjectSection {
-  title: string
-  items: string[]
+const { data: project } = await useAsyncData(`project-${route.params.slug}`, () =>
+    queryCollection('projects')
+        .path(`/projects/${route.params.slug}`)
+        .first()
+)
+
+if (!project.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Projet introuvable', fatal: true })
 }
 
-interface ProjectImage {
-  src: string
-  alt: string
-  caption: string
-}
-
-interface CaseStudy {
-  slug: string
-  title: string
-  tldr: string
-  type: string
-  stack: { name: string; theme: string }[]
-  context: string
-  mission: string
-  sections: ProjectSection[]
-  results: { challenge: string; outcome: string }
-  images: ProjectImage[]
-}
-
-const project: CaseStudy = {
-  slug: 'mux-directus',
-  title: "Intégration de Mux dans Directus",
-  tldr: "Une extension custom qui apporte le streaming vidéo optimisé dans Directus, sans une ligne de stockage serveur.",
-  type: "Extension backend custom",
-  stack: [
-    { name: "Directus", theme: "accent" } as const,
-    { name: "Mux", theme: "accent" } as const,
-    { name: "Node.js", theme: "white" } as const,
-    { name: "Vue.js", theme: "white" } as const,
-  ],
-  context: "Directus ne proposait aucune solution native pour intégrer des vidéos sans les stocker directement sur le serveur, ce qui limitait notre capacité à proposer cette fonctionnalité aux clients. L'objectif était de permettre l'intégration de vidéos optimisées sur un site, sans surcharger l'infrastructure serveur.",
-  mission: "J'ai géré la totalité du projet en autonomie complète, sans supervision. Je me suis formé sur la documentation Mux, rédigé un cahier des charges définissant un MVP, puis fait évoluer l'extension par itérations successives.",
-  sections: [
-    {
-      title: "Frontend",
-      items: [
-        "Module custom ajouté au menu Directus, avec deux vues type dashboard : formulaire d'upload (drag & drop) et bibliothèque vidéo.",
-        "Recherche par nom, prévisualisation en lecture directe, et gestion intelligente de la suppression (bloquée si liée à un bloc actif).",
-        "Interface de lecture vidéo custom basée sur les métadonnées Mux (asset ID, playback ID).",
-        "Paramétrage contextuel par vidéo : couleurs, loop, autoplay, résolution."
-      ]
-    },
-    {
-      title: "Backend / Directus",
-      items: [
-        "Endpoint d'upload : transmission à l'API Mux et réception des métadonnées via webhooks custom.",
-        "Endpoint de suppression : synchronisation entre Directus et Mux avec vérification d'intégrité.",
-        "Défi : Conception de l'intégration sans documentation existante, gestion de l'asynchronisme et structuration de la logique métier."
-      ]
-    }
-  ],
-  results: {
-    challenge: "Concevoir l'intégration Mux dans Directus sans documentation ni exemple existant, en structurant seul les données et la logique métier, tout en gérant l'asynchronisme.",
-    outcome: "N'importe qui dans l'équipe peut désormais uploader et paramétrer une vidéo sans intervention technique. Zéro stockage sur serveur, zéro surcharge d'infrastructure."
-  },
-  images: [
-    { src: "/img/projects/mux/ux-extension.jpg", alt: "Formulaire d'upload drag & drop", caption: "Point d'entrée UX, facile à comprendre visuellement" },
-    { src: "/img/projects/mux/library.jpg", alt: "Bibliothèque vidéo Directus", caption: "Cohérence parfaite avec l'interface native de Directus" },
-    { src: "/img/projects/mux/settings.jpg", alt: "Paramétrage vidéo", caption: "Personnalisation contextuelle (loop, autoplay, résolution)" },
-    { src: "/img/projects/mux/result.jpg", alt: "Rendu final sur le site Gintlemen", caption: "Résultat final intégré via le système de blocs" }
-  ]
-}
+useSeoMeta({
+  title: `${project.value.title} — Valentin Yerna`,
+  description: project.value.tldr
+})
 
 // ─────────────────────────────────────────────
-// Navigation "projet suivant" (circulaire)
+// Navigation "projet suivant"
 // ─────────────────────────────────────────────
-const projectIndex = [
-  { slug: 'maison-rorive', name: 'Maison Rorive', type: 'E-commerce B2B & ERP' },
-  { slug: 'mux-directus', name: 'Extension Mux Directus', type: 'Backend Extension' },
-  { slug: 'gintlemen', name: 'Gintlemen Site', type: 'Corporate / Showcase' },
-  { slug: 'custom-crm', name: 'Custom CRM Solution', type: 'Internal Tool' },
-  { slug: 'iot-dashboard', name: 'IoT Monitoring', type: 'Dashboard' }
-]
+const { data: nextProjectData } = await useAsyncData(`next-project-${route.params.slug}`, async () => {
+  if (!project.value?.next_project) return null
+
+  return await queryCollection('projects')
+      .where('slug', '=', project.value.next_project)
+      .select('title', 'type', 'slug')
+      .first()
+})
 
 const nextProject = computed(() => {
-  const currentSlug = (route.params.slug as string) || project.slug
-  const currentIdx = projectIndex.findIndex(p => p.slug === currentSlug)
-  return projectIndex[(currentIdx + 1) % projectIndex.length]
+  if (!nextProjectData.value) return null
+
+  return {
+    slug: nextProjectData.value.slug,
+    name: nextProjectData.value.title,
+    type: nextProjectData.value.type
+  }
 })
 
 // ─────────────────────────────────────────────
@@ -100,7 +49,6 @@ onMounted(() => {
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Entrée du header
       gsap.from('.project-header > *', {
         y: 24,
         opacity: 0,
@@ -109,7 +57,6 @@ onMounted(() => {
         ease: 'power3.out'
       })
 
-      // Sections au scroll (une seule fois, pas de replay au scroll retour)
       gsap.utils.toArray<HTMLElement>('.reveal-on-scroll').forEach((section) => {
         gsap.from(section, {
           scrollTrigger: {
@@ -124,7 +71,6 @@ onMounted(() => {
         })
       })
 
-      // Items de liste : stagger interne à chaque section
       gsap.utils.toArray<HTMLElement>('.feature-list').forEach((list) => {
         gsap.from(list.children, {
           scrollTrigger: {
@@ -140,7 +86,6 @@ onMounted(() => {
         })
       })
 
-      // Images de la galerie
       gsap.utils.toArray<HTMLElement>('.project-image').forEach((img) => {
         gsap.from(img, {
           scrollTrigger: {
@@ -160,16 +105,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <main ref="container">
+  <main v-if="project" ref="container" class="relative z-10">
     <!-- Header Documentation Style -->
     <header class="responsive-padding-x responsive-padding-t--large responsive-padding-b border-b border-white/5">
       <div class="project-header responsive-layout">
         <nav class="flex items-center gap-2 text-sm font-jetbrains-mono text-grey-100 mb-6" aria-label="Breadcrumb">
-          <nuxt-link to="/" class="hover:text-accent transition-colors">~</nuxt-link>
+          <nuxt-link to="/" aria-label="Accueil" class="hover:text-accent transition-colors">~</nuxt-link>
           <span aria-hidden="true">/</span>
-          <nuxt-link to="/projets" class="hover:text-accent transition-colors">projets</nuxt-link>
+          <nuxt-link to="/projets" aria-label="Projets" class="hover:text-accent transition-colors">projets</nuxt-link>
           <span aria-hidden="true">/</span>
-          <span class="text-accent truncate max-w-[16rem] md:max-w-none">{{ project.slug }}</span>
+          <span class="text-accent truncate max-w-[16rem] md:max-w-none">{{ route.params.slug }}</span>
         </nav>
 
         <h1 class="text-h1 font-semibold mb-4 text-white-100">
@@ -244,7 +189,7 @@ onMounted(() => {
                       <nuxt-picture
                           :src="img.src"
                           :alt="img.alt"
-                          class="block rounded-xl overflow-hidden border border-white/10 bg-white/5"
+                          class="block rounded-xl overflow-hidden border border-white/10"
                           :img-attrs="{ class: 'size-full object-cover group-hover:scale-105 transition-transform duration-700' }" />
                     </div>
                     <figcaption class="flex items-center gap-3 px-2">
@@ -286,7 +231,7 @@ onMounted(() => {
           <div class="p-8 rounded-xl border border-white/5 bg-white/2 space-y-8">
             <div>
               <h2 class="text-xs uppercase tracking-widest text-white-100 mb-4">Architecture</h2>
-              <p class="text-sm text-grey-100 leading-relaxed font-inter">Intégration API Mux via Webhooks Directus. Synchronisation d'état temps réel.</p>
+              <p class="text-sm text-grey-100 leading-relaxed font-inter">{{ project.architecture }}</p>
             </div>
 
             <div class="pt-8 border-t border-white/5">
@@ -294,14 +239,14 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="px-8 space-y-4">
+          <div v-if="nextProject" class="px-8 space-y-4">
             <h2 class="text-xs uppercase tracking-widest text-grey-100">Projet suivant</h2>
-            <nuxt-link :to="`/projets/${nextProject.slug}`" class="group block">
+            <NuxtLink :to="`/projets/${nextProject.slug}`" class="group block">
               <p class="text-white-100 group-hover:text-accent transition-colors font-space-grotesk text-lg">
                 {{ nextProject.name }}
               </p>
               <p class="text-sm text-grey-300">{{ nextProject.type }}</p>
-            </nuxt-link>
+            </NuxtLink>
           </div>
         </aside>
 
@@ -311,8 +256,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.project-image img {
+  background-color: var(--color-black-100);
+}
+
 .project-image {
   will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
