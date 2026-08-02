@@ -1,1 +1,0 @@
-spotlightRef = ref(null); onMounted(() => { const s = spotlightRef.value; window.addEventListener("mousemove", (e) => { gsap.set(s, { x: e.clientX, y: e.clientY }); }); });

@@ -55,69 +55,72 @@ const containerRef = ref<HTMLElement | null>(null)
 const cursorRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  createCtx(containerRef, (self) => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  createCtx(containerRef, () => {
+    const mm = gsap.matchMedia()
 
-    if (prefersReducedMotion) {
-      gsap.set('.animate-item', { opacity: 1, y: 0 })
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Hero Animation
+      const contentTl = gsap.timeline({ defaults: { ease: 'expo.out' }, delay: 0.3 })
+
+      contentTl.to('.split-word', {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.03,
+      })
+
+      contentTl.fromTo('.stagger-block',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
+          '-=0.3'
+      )
+
+      // Terminal : boucle de frappe infinie
+      const terminalTl = gsap.timeline({ repeat: -1 })
+
+      commands.forEach((cmd, index) => {
+        typeText(terminalTl, '.typing-text', cmd, { delay: index === 0 ? 0 : 0.4 })
+        terminalTl.to('.typing-text', { text: { value: '' }, duration: 0.1, delay: 0.8 })
+      })
+
+      if (cursorRef.value) {
+        gsap.to(cursorRef.value, {
+          opacity: 0,
+          duration: 0.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
+        })
+      }
+
+      // Scroll Animations
+      const sections = gsap.utils.toArray<HTMLElement>('.reveal-section')
+      sections.forEach((section) => {
+        gsap.from(section.querySelectorAll('.reveal-item'), {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          },
+          opacity: 0,
+          y: 40,
+          scale: 0.98,
+          duration: 1,
+          stagger: {
+            amount: 0.4,
+            from: 'start'
+          },
+          ease: 'expo.out'
+        })
+      })
+    })
+
+    // Reduced motion : tout visible immédiatement, terminal statique
+    mm.add('(prefers-reduced-motion: reduce)', () => {
       gsap.set('.split-word', { opacity: 1, y: 0 })
+      gsap.set('.stagger-block', { opacity: 1, y: 0 })
       const el = document.querySelector('.typing-text')
       if (el) el.textContent = commands[0]
-      return
-    }
-
-    // Hero Animation
-    const contentTl = gsap.timeline({ defaults: { ease: 'expo.out' }, delay: 0.3 })
-
-    contentTl.to('.split-word', {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      stagger: 0.03,
-    })
-
-    contentTl.fromTo('.stagger-block',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
-        "-=0.3"
-    )
-
-    const terminalTl = gsap.timeline({ repeat: -1 })
-
-    commands.forEach((cmd, index) => {
-      typeText(terminalTl, '.typing-text', cmd, { delay: index === 0 ? 0 : 0.4 })
-      terminalTl.to('.typing-text', { text: { value: "" }, duration: 0.1, delay: 0.8 })
-    })
-
-    if (cursorRef.value) {
-      gsap.to(cursorRef.value, {
-        opacity: 0,
-        duration: 0.5,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut',
-      })
-    }
-
-    // Scroll Animations
-    const sections = gsap.utils.toArray<HTMLElement>('.reveal-section')
-    sections.forEach((section) => {
-      gsap.from(section.querySelectorAll('.reveal-item'), {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        opacity: 0,
-        y: 40,
-        scale: 0.98,
-        duration: 1,
-        stagger: {
-          amount: 0.4,
-          from: "start"
-        },
-        ease: 'expo.out'
-      })
     })
   })
 })
@@ -134,6 +137,7 @@ const technos = [
 
 const projects = [
   {
+    id: "01",
     title: "Maison Rorive",
     description: "Une plateforme B2B conçue pour simplifier la gestion d’un catalogue de plusieurs milliers de références, avec filtres avancés et intégration en temps réel de l’ERP Mercator.",
     tags: [
@@ -142,9 +146,10 @@ const projects = [
       { name: "Directus", theme: "white" } as const
     ],
     image: "/img/projects/maison-rorive-preview.jpg",
-    link: "/projets/projet-1"
+    slug: "projet-1"
   },
   {
+    id: "02",
     title: "Intégration Mux dans Directus",
     description: "Une extension Directus développée de bout en bout pour intégrer Mux, permettant d’uploader, gérer et paramétrer des vidéos sans les stocker sur le serveur.",
     tags: [
@@ -153,7 +158,7 @@ const projects = [
       { name: "Intégration custom", theme: "white" } as const
     ],
     image: "/img/projects/mux-directus.jpg",
-    link: "/projets/projet-2"
+    slug: "mux-extension"
   }
 ]
 </script>
@@ -229,11 +234,11 @@ const projects = [
     </section>
 
     <!-- PROJECTS PREVIEW -->
-    <section class="reveal-section responsive-padding-x responsive-padding-y bg-white/[0.01]">
+    <section aria-labelledby="projects-preview" class="reveal-section responsive-padding-x responsive-padding-y bg-white/1">
       <div class="responsive-layout">
         <div class="reveal-item flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
           <div>
-            <h2 class="text-h2 text-white-100 mb-4">Réalisations</h2>
+            <h2 id="projects-preview" class="text-h2 text-white-100 mb-4">Réalisations</h2>
             <p class="text-grey-100 max-w-120">Une sélection de projets mettant en œuvre des architectures complexes et des interfaces soignées.</p>
           </div>
           <AppButton theme="ghost" icon="arrow-right" size="small">Tous les projets</AppButton>
@@ -242,17 +247,24 @@ const projects = [
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <article
               v-for="project in projects"
-              :key="project.title"
-              class="reveal-item aspect-video rounded-xl border border-white/10 bg-black-100 overflow-hidden group relative"
+              :key="project.slug"
+              class="reveal-item aspect-video rounded-xl border border-white/10 bg-black-100 overflow-hidden group relative hover:border-accent/30 transition-colors duration-300"
           >
+            <nuxt-picture
+                :src="project.image"
+                :alt="project.title"
+                :img-attrs="{ class: 'size-full object-cover aspect-video group-hover:scale-105 transition-transform duration-700' }"
+            />
 
-            <nuxt-picture :src="project.image" :alt="project.title" :img-attrs="{ class: 'size-full object-cover aspect-video' }" />
+            <div class="absolute inset-0 z-10 bg-linear-to-t from-black via-black/60 to-transparent opacity-100 group-hover:opacity-80 transition-opacity duration-300" aria-hidden="true" />
 
-            <div class="absolute inset-0 z-10 bg-linear-to-t from-black via-black/60 to-transparent opacity-100 group-hover:opacity-80 transition-opacity duration-300">
-            </div>
+            <!-- Index -->
+            <span class="absolute top-6 left-8 z-20 font-jetbrains-mono text-sm text-grey-300 group-hover:text-accent transition-colors duration-300 tabular-nums" aria-hidden="true">
+              {{ project.id }}
+            </span>
 
             <div class="absolute bottom-0 left-0 p-8 w-full z-20">
-              <div class="flex gap-2 mb-3">
+              <div class="flex flex-wrap gap-2 mb-3">
                 <Chip
                     v-for="tag in project.tags"
                     :key="tag.name"
@@ -263,13 +275,15 @@ const projects = [
                   {{ tag.name }}
                 </Chip>
               </div>
-              <h3 class="text-h3 text-white-100 mb-2">{{ project.title }}</h3>
-              <p class="text-sm text-grey-100 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+              <h3 class="text-h3 text-white-100 mb-2 group-hover:text-accent transition-colors duration-300">
+                {{ project.title }}
+              </h3>
+              <p class="text-sm text-grey-100 transition-all duration-500 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
                 {{ project.description }}
               </p>
             </div>
 
-            <nuxt-link class="absolute inset-0 z-30" :aria-label="'Voir le projet ' + project.title" />
+            <nuxt-link :to="`/projets/${project.slug}`" class="absolute inset-0 z-30" :aria-label="`Voir le projet ${project.title}`" />
           </article>
         </div>
       </div>
@@ -279,7 +293,7 @@ const projects = [
     <section class="reveal-section responsive-padding-x responsive-padding-y--large">
       <div class="responsive-layout border border-accent/20 bg-accent/5 rounded-3xl p-12 md:p-24 text-center overflow-hidden relative">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--color-accent)_0%,transparent_70%)] opacity-5 pointer-events-none"></div>
-        
+
         <h2 class="reveal-item big-title text-white-100 mb-8">On travaille ensemble ?</h2>
         <p class="reveal-item text-lg text-grey-100 max-w-160 mx-auto mb-12">
           Vous avez un projet complexe ou besoin d'une expertise technique pour passer de l'idée à la production ? Parlons-en.

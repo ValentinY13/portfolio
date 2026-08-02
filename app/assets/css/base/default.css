@@ -1,7 +1,7 @@
 @layer base {
 
     body {
-        --_background-color: var(--theme-bg-color, var(--color-black-100));
+        --_background-color: var(--color-black-100);
         background-color: var(--_background-color);
         @apply transition-[background] duration-1000 ease-in-out;
 
