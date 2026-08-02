@@ -31,3 +31,30 @@
     width: 1em;
     height: 1em;
 }
+
+.icon-github {
+    mask: url('/svg/icons/github.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+}
+
+.icon-linkedin {
+    mask: url('/svg/icons/linkedin.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+}
+
+.icon-mail {
+    mask: url('/svg/icons/mail.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+}
