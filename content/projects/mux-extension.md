@@ -1,7 +1,7 @@
 ---
 title: "Intégration de Mux dans Directus"
 tldr: "Une extension custom qui apporte le streaming vidéo optimisé dans Directus, sans une ligne de stockage serveur."
-type: "Extension backend custom"
+type: "Intégration backend custom"
 date: "2024"
 status: "Internal"
 slug: "mux-extension"

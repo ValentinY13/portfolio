@@ -173,7 +173,7 @@ onMounted(() => {
           <!-- CTA -->
           <div class="stagger-block flex flex-col sm:flex-row gap-4 mb-16">
             <AppButton icon="arrow-right">Voir mes projets</AppButton>
-            <AppButton theme="ghost">Me contacter</AppButton>
+            <AppButton theme="ghost">Voir mon CV</AppButton>
           </div>
         </div>
 
@@ -187,10 +187,10 @@ onMounted(() => {
     <!-- TECH SECTION -->
     <LayoutTechnos class="reveal-section responsive-padding-y" :items="technos" />
 
-    <!-- SKILLS SECTION (Transversales) -->
+    <!-- SKILLS SECTION -->
     <section aria-labelledby="transversal-skills" class="reveal-section responsive-padding-x responsive-padding-y">
       <div class="responsive-layout">
-        <h2 id="transversal-skills" class="reveal-item text-h2 text-white-100 mb-16">Expertise transversale</h2>
+        <h2 id="transversal-skills" class="reveal-item text-h2 text-white-100 mb-16">Compétences transversales</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div v-for="item in transversalSkills" :key="item.id" class="reveal-item p-8 rounded-xl border border-white/5 bg-white/2 hover:border-accent/30 transition-colors group">
 
@@ -276,10 +276,11 @@ onMounted(() => {
 
         <h2 class="reveal-item big-title text-white-100 mb-8">On travaille ensemble ?</h2>
         <p class="reveal-item text-lg text-grey-100 max-w-160 mx-auto mb-12">
-          Vous avez un projet complexe ou besoin d'une expertise technique pour passer de l'idée à la production ? Parlons-en.
+          Je recherche un poste de développeur full-stack, en équipe, sur des
+          projets ambitieux.
         </p>
         <div class="reveal-item text-center">
-          <AppButton theme="glowing" size="small" icon="arrow-right">Démarrer une conversation</AppButton>
+          <AppButton theme="glowing" size="small" icon="arrow-right">Me contacter</AppButton>
         </div>
       </div>
     </section>
