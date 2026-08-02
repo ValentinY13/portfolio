@@ -33,6 +33,7 @@ sections:
 results:
   challenge: "Gérer la sauvegarde fiable des réponses d'un formulaire multi-étapes complexe, tout en orchestrant la génération d'un avis cohérent par IA à partir de réponses textuelles variables."
   outcome: "Les demandes d'avis sont désormais automatisées et centralisées dans Directus, sans relance manuelle ni gestion d'emails côté administrateur. Le client bénéficie d'un parcours rapide et guidé jusqu'à la publication de son avis sur Google."
+preview_image: "/img/projects/review-extension-preview.jpg"
 images:
   - src: "/img/projects/review/email.jpg"
     alt: "Email de demande d'avis reçu par le client"

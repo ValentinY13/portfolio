@@ -33,6 +33,7 @@ sections:
 results:
   challenge: "Optimiser l'intégration de modèles 3D pour desktop et mobile sans sacrifier la performance, tout en gérant le fluide interactif (curseur en desktop, mouvement autonome en mobile) et un système de multi-thématisation piloté depuis Directus, changeant dynamiquement selon le projet consulté."
   outcome: "Gintlemen dispose désormais d'une vitrine technique à la hauteur de son expertise réelle, capable de convaincre des prospects par la démonstration plutôt que par le discours, tout en donnant à l'équipe une autonomie complète sur la publication de contenu grâce à l'IA intégrée et à la programmation d'articles."
+preview_image: "/img/projects/gintlemen-preview.jpg"
 images:
   - src: "/img/projects/gintlemen/gintlemen-modele-3d.jpg"
     alt: "Modèle 3D sur une page service"

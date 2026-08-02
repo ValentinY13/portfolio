@@ -28,6 +28,7 @@ export default defineContentConfig({
                     challenge: z.string(),
                     outcome: z.string()
                 }),
+                preview_image: z.string(),
                 images: z.array(z.object({
                     src: z.string(),
                     alt: z.string(),

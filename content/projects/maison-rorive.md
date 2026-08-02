@@ -33,6 +33,7 @@ sections:
 results:
   challenge: "Optimiser l'affichage et le filtrage sur un catalogue de plusieurs milliers de références, tout en intégrant une API externe complète et en gérant plusieurs états applicatifs (panier, connexion, historique)."
   outcome: "Le client gère désormais en totale autonomie ses articles de blog, ses pages de services et son catalogue produits/promotions, sans jamais dépendre d'un développeur pour publier ou corriger du contenu. Le système de blocs Directus garantit une cohérence visuelle systématique avec l'identité de marque."
+preview_image: "/img/projects/maison-rorive-preview.jpg"
 images:
   - src: "/img/projects/maison-rorive/maison-rorive-catalogue.jpg"
     alt: "Page catalogue avec filtres ouverts"

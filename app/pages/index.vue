@@ -50,32 +50,23 @@ const transversalSkills = [
   }
 ]
 
-const projects = [
-  {
-    id: "01",
-    title: "Maison Rorive",
-    description: "Une plateforme B2B conçue pour simplifier la gestion d’un catalogue de plusieurs milliers de références, avec filtres avancés et intégration en temps réel de l’ERP Mercator.",
-    tags: [
-      { name: "Nuxt", theme: "accent" } as const,
-      { name: "ERP Mercator", theme: "accent" } as const,
-      { name: "Directus", theme: "white" } as const
-    ],
-    image: "/img/projects/maison-rorive-preview.jpg",
-    to: {name: 'projets-slug', params: {slug: 'maison-rorive'}}
-  },
-  {
-    id: "02",
-    title: "Intégration Mux dans Directus",
-    description: "Une extension Directus développée de bout en bout pour intégrer Mux, permettant d’uploader, gérer et paramétrer des vidéos sans les stocker sur le serveur.",
-    tags: [
-      { name: "Directus", theme: "accent" } as const,
-      { name: "Mux", theme: "white" } as const,
-      { name: "Intégration custom", theme: "white" } as const
-    ],
-    image: "/img/projects/mux-directus.jpg",
-    to: {name: 'projets-slug', params: {slug: 'mux-extension'}}
-  }
-]
+const { data: featuredProjects } = await useAsyncData('projects-home', () =>
+    queryCollection('projects')
+        .where('slug', 'IN', ['maison-rorive', 'mux-extension'])
+        .select('title', 'tldr', 'stack', 'slug', 'preview_image')
+        .all()
+)
+
+const projects = computed(() => {
+  return featuredProjects.value?.map((project, index) => ({
+    id: String(index + 1).padStart(2, '0'),
+    title: project.title,
+    description: project.tldr,
+    tags: project.stack.slice(0, 3),
+    image: project.preview_image,
+    to: { name: 'projets-slug', params: { slug: project.slug } }
+  })) || []
+})
 
 const containerRef = ref<HTMLElement | null>(null)
 const cursorRef = ref<HTMLElement | null>(null)

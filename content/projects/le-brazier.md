@@ -34,6 +34,7 @@ sections:
 results:
   challenge: "Concevoir une architecture entièrement dynamique pour plusieurs établissements simultanés (navigation, contenu, cartes), avec une logique récursive pour les sections/sous-sections de menu et une gestion conditionnelle du formulaire de contact selon le type de demande."
   outcome: "Le client gère désormais l'intégralité de son activité depuis le site — horaires, carte, offres d'emploi et guide des viandes — sans dépendre d'un développeur, avec la possibilité de préparer et planifier ses contenus saisonniers en toute autonomie."
+preview_image: "/img/projects/le-brazier-preview.jpg"
 images:
   - src: "/img/projects/le-brazier/le-brazier-etablissement.jpg"
     alt: "Page établissement avec statut ouvert/fermé"
