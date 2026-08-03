@@ -115,7 +115,7 @@ useSeoMeta({
               <div class="reveal-item lg:hidden flex items-center gap-4">
                 <div class="size-20 shrink-0 rounded-full overflow-hidden border border-white/10">
                   <nuxt-picture
-                      src="/images/valentin-yerna.jpg"
+                      src="/img/valentin-yerna.jpg"
                       alt="Portrait de Valentin Yerna, développeur full-stack"
                       :img-attrs="{ class: 'w-full h-full object-cover' }"
                   />
