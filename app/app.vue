@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import gsap from 'gsap'
-
 useHead({
   link: [
     { rel: 'preload', as: 'style', href: '/css/font.css' },
@@ -19,6 +16,7 @@ initSpotlight()
 <template>
   <div class="relative min-h-screen overflow-x-clip bg-black-100">
     <NuxtLayout>
+      <TheMenu />
       <NuxtPage />
       <TheFooter />
 
