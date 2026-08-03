@@ -6,9 +6,11 @@ export const useGsap = () => {
      */
     const createCtx = (el: HTMLElement | Ref<HTMLElement | null>, fn: gsap.ContextFunc) => {
         const target = unref(el)
-        if (!target) return
+        const actualTarget = (target && '$el' in target) ? target.$el : target
 
-        const ctx = $gsap.context(fn, target)
+        if (!actualTarget) return
+
+        const ctx = $gsap.context(fn, actualTarget)
         onUnmounted(() => ctx.revert())
         return ctx
     }

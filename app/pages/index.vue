@@ -172,8 +172,8 @@ onMounted(() => {
 
           <!-- CTA -->
           <div class="stagger-block flex flex-col sm:flex-row gap-4 mb-16">
-            <AppButton icon="arrow-right">Voir mes projets</AppButton>
-            <AppButton theme="ghost">Voir mon CV</AppButton>
+            <AppButton to="/projets" icon="arrow-right">Voir mes projets</AppButton>
+            <AppButton to="/contact" theme="ghost">Me contacter</AppButton>
           </div>
         </div>
 
@@ -280,7 +280,7 @@ onMounted(() => {
           projets ambitieux.
         </p>
         <div class="reveal-item text-center">
-          <AppButton theme="glowing" size="small" icon="arrow-right">Me contacter</AppButton>
+          <AppButton to="/contact" theme="glowing" size="small" icon="arrow-right">Me contacter</AppButton>
         </div>
       </div>
     </section>

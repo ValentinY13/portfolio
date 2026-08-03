@@ -11,6 +11,7 @@ const {theme = 'glowing', to, size, icon, disabled} = defineProps<{
 
 const { gsap, createCtx } = useGsap()
 const buttonRef = ref<HTMLElement | null>(null)
+let onMouseMoveHandler: ((e: MouseEvent) => void) | null = null
 const spotlightRef = ref<HTMLElement | null>(null)
 
 // Logique de rendu dynamique
@@ -28,12 +29,13 @@ onMounted(() => {
   createCtx(buttonRef, () => {
     if (!buttonRef.value) return
 
-    const btn = buttonRef.value!
+    const btnEl = buttonRef.value?.$el || buttonRef.value
+    if (!btnEl || !(btnEl instanceof HTMLElement)) return
 
     if (theme === 'glowing' && spotlightRef.value) {
       const spot = spotlightRef.value!
       const onMouseMove = (e: MouseEvent) => {
-        const rect = btn.getBoundingClientRect()
+        const rect = btnEl.getBoundingClientRect()
         const x = e.clientX - rect.left
         const y = e.clientY - rect.top
 
@@ -44,16 +46,23 @@ onMounted(() => {
           ease: 'power2.out'
         })
       }
-      btn.addEventListener('mousemove', onMouseMove)
+      btnEl.addEventListener('mousemove', onMouseMove)
     }
 
     if (theme === 'ghost') {
-      gsap.fromTo(btn,
+      gsap.fromTo(btnEl,
           { opacity: 0, x: -10 },
           { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 }
       )
     }
   })
+})
+
+onUnmounted(() => {
+  const btnEl = buttonRef.value?.$el || buttonRef.value
+  if (btnEl && onMouseMoveHandler) {
+    btnEl.removeEventListener('mousemove', onMouseMoveHandler)
+  }
 })
 </script>
 
