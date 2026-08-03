@@ -12,14 +12,43 @@ useHead({
 
 const { initSpotlight } = useSpotlight()
 initSpotlight()
+
+const transitionRef = ref()
+
+const handleLeave = (el: any, done: any) => {
+  if (transitionRef.value) {
+    transitionRef.value.onLeave(el, done)
+  } else {
+    done()
+  }
+}
+
+const handleEnter = (el: any, done: any) => {
+  if (transitionRef.value) {
+    transitionRef.value.onEnter(el, done)
+  } else {
+    done()
+  }
+}
 </script>
 
 <template>
   <div class="relative min-h-screen overflow-x-clip bg-black-100">
     <NuxtLayout>
       <TheMenu />
-      <NuxtPage />
+      <NuxtPage
+          :transition="{
+          name: 'page',
+          mode: 'out-in',
+          onEnter: handleEnter,
+          onLeave: handleLeave,
+          css: false,
+          appear: true
+        }"
+      />
       <TheFooter />
+
+      <PageTransition ref="transitionRef" />
 
       <!-- Status Bar Style Footer -->
       <div class="fixed bottom-0 left-0 right-0 h-6 bg-accent/10 border-t border-white/5 flex items-center justify-between px-4 font-jetbrains-mono text-[10px] text-grey-100/60 z-50">
@@ -37,13 +66,4 @@ initSpotlight()
 </template>
 
 <style>
-.page-enter-active,
-.page-leave-active {
-  transition: all .6s;
-}
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-}
 </style>
