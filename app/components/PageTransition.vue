@@ -21,6 +21,8 @@ const getCells = () => container.value?.querySelectorAll('.transition-cell')
 // Accessibilité
 const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
 
+const isMobile = useMediaQuery('(max-width: 767px)')
+
 /**
  * Transition d'entrée : l'écran est masqué par les cellules, on les fait
  * disparaître depuis le centre puis la page entrante fade in en parallèle.
@@ -69,11 +71,13 @@ defineExpose({ onEnter, onLeave })
 </script>
 
 <template>
-  <div ref="container"
-       class="fixed inset-0 pointer-events-none z-9999 grid"
-       :style="{
-         gridTemplateColumns: `repeat(${columns}, 1fr)`,
-       }"
+  <div
+      v-if="!isMobile"
+      ref="container"
+      class="fixed inset-0 pointer-events-none z-9999 grid"
+      :style="{
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+      }"
   >
     <div
         v-for="i in cells"
