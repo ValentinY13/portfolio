@@ -107,16 +107,7 @@ const onListMouseMove = (e: MouseEvent) => {
       <div class="responsive-layout">
         <!-- Header breadcrumb + titre -->
         <header class="page-header mb-16 space-y-6">
-          <nav aria-label="Fil d'Ariane">
-            <ol class="flex items-center gap-2 text-sm text-grey-100">
-              <li>
-                <nuxt-link to="/" class="hover:text-accent transition-colors">~</nuxt-link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li aria-current="page">projets</li>
-              <li aria-hidden="true" class="text-accent animate-pulse">_</li>
-            </ol>
-          </nav>
+          <Breadcrumb :items="[{ label: 'projets' }]" />
 
           <h1 class="text-h1 text-white-100 font-space-grotesk font-bold leading-tight">
             Explorer mes <span class="text-accent italic">solutions</span>.

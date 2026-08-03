@@ -22,6 +22,16 @@
     height: 1em;
 }
 
+.icon-small-arrow-right {
+    mask: url('/svg/icons/small-arrow-right.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+
+    width: 1em;
+    height: 1em;
+}
+
 .icon-nuxt {
     mask: url('/svg/technos/nuxt.svg');
     mask-position: center;
@@ -52,6 +62,24 @@
 
 .icon-mail {
     mask: url('/svg/icons/mail.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+}
+
+.icon-terminal {
+    mask: url('/svg/icons/copy.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+}
+
+.icon-education {
+    mask: url('/svg/icons/small-arrow-right.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
