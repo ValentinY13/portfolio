@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vee-validate/nuxt',
     '@nuxtjs/seo',
+    '@nuxt/content',
   ],
 
   vite: {
@@ -27,5 +28,9 @@ export default defineNuxtConfig({
   vue: {
     compilerOptions: {
       isCustomElement: (tag: string) => tag.startsWith('swiper') || tag.startsWith('mux-'),        },
+  },
+
+  ogImage: {
+    enabled: false
   },
 })

@@ -1,15 +1,53 @@
 @layer base {
-    :root {
-        --directus-visual-editing--rect--border-spacing: 0px;
-        --directus-visual-editing--rect--border-color: var(--theme-fluid-color, #6644ff);
-        --directus-visual-editing--edit-btn--bg-color: var(--theme-fluid-color, #6644ff);
-    }
 
     body {
-        --_background-color: var(--theme-bg-color, var(--color-blue-100));
-        @apply bg-(--_background-color) transition-[background] duration-1000 ease-in-out;
+        --_background-color: var(--color-black-100);
+        background-color: var(--_background-color);
+        @apply transition-[background] duration-1000 ease-in-out;
 
-        @apply text-white font-poppins;
+        /* Grille de base (très sombre) */
+        background-image:
+                linear-gradient(to right, oklch(0.985 0 89.876 / 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, oklch(0.985 0 89.876 / 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-attachment: fixed;
+        position: relative;
+
+        @apply text-white font-inter;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image:
+                linear-gradient(to right, oklch(0.705 0.169 153.567 / 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, oklch(0.705 0.169 153.567 / 0.15) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-attachment: fixed;
+
+        /* Spotlight */
+        mask-image: radial-gradient(
+                circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                black 0%,
+                transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+                circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                black 0%,
+                transparent 100%
+        );
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at 50% 50%, oklch(0.705 0.169 153.567 / 0.05) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: -1;
     }
 
     /*path {
@@ -38,7 +76,7 @@
     }
 
     ::selection {
-        @apply bg-(--theme-fluid-color) text-(--theme-bg-color)
+        @apply bg-(--color-accent) text-(--color-black-100);
     }
 
     /* Allow color transition */

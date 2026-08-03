@@ -2,6 +2,16 @@
     @apply bg-current inline-block;
 }
 
+.icon-copy {
+    mask: url('/svg/icons/copy.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+
+    width: 1em;
+    height: 1em;
+}
+
 .icon-arrow-right {
     mask: url('/svg/icons/arrow-right.svg');
     mask-position: center;
@@ -12,8 +22,8 @@
     height: 1em;
 }
 
-.icon-arrow-up-right-from-square {
-    mask: url('/svg/icons/arrow-up-right-from-square.svg');
+.icon-small-arrow-right {
+    mask: url('/svg/icons/small-arrow-right.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
@@ -22,8 +32,8 @@
     height: 1em;
 }
 
-.icon-arrow-right-small {
-    mask: url('/svg/icons/arrow-right-small.svg');
+.icon-nuxt {
+    mask: url('/svg/technos/nuxt.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
@@ -32,92 +42,47 @@
     height: 1em;
 }
 
-.icon-arrow-left {
-    mask: url('/svg/icons/arrow-left.svg');
+.icon-github {
+    mask: url('/svg/icons/github.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
-
     width: 1em;
     height: 1em;
 }
 
-.icon-open-external {
-    mask: url('/svg/icons/open-external.svg');
+.icon-linkedin {
+    mask: url('/svg/icons/linkedin.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
-
     width: 1em;
     height: 1em;
 }
 
-.icon-arrow-bottom-gintlemen {
-    mask: url('/svg/icons/arrow-bottom-gintlemen.svg');
+.icon-mail {
+    mask: url('/svg/icons/mail.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
-
     width: 1em;
     height: 1em;
 }
 
-.icon-cross {
-    mask: url('/svg/icons/cross.svg');
+.icon-terminal {
+    mask: url('/svg/icons/copy.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
-
     width: 1em;
     height: 1em;
 }
 
-.icon-star {
-    mask: url('/svg/icons/star.svg');
+.icon-education {
+    mask: url('/svg/icons/small-arrow-right.svg');
     mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
-
-    width: 1em;
-    height: 1em;
-}
-
-.icon-magnify {
-    mask: url('/svg/icons/magnify.svg');
-    mask-position: center;
-    mask-size: contain;
-    mask-repeat: no-repeat;
-
-    width: 1em;
-    height: 1em;
-}
-
-.icon-sort {
-    mask: url('/svg/icons/sort.svg');
-    mask-position: center;
-    mask-size: contain;
-    mask-repeat: no-repeat;
-
-    width: 1em;
-    height: 1em;
-}
-
-.icon-copy-empty {
-    mask: url('/svg/icons/copy-empty.svg');
-    mask-position: center;
-    mask-size: contain;
-    mask-repeat: no-repeat;
-
-    width: 1em;
-    height: 1em;
-}
-
-.icon-copy-full {
-    mask: url('/svg/icons/copy-full.svg');
-    mask-position: center;
-    mask-size: contain;
-    mask-repeat: no-repeat;
-
     width: 1em;
     height: 1em;
 }
