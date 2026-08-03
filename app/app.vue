@@ -20,6 +20,7 @@ initSpotlight()
   <div class="relative min-h-screen overflow-x-clip bg-black-100">
     <NuxtLayout>
       <NuxtPage />
+      <TheFooter />
 
       <!-- Status Bar Style Footer -->
       <div class="fixed bottom-0 left-0 right-0 h-6 bg-accent/10 border-t border-white/5 flex items-center justify-between px-4 font-jetbrains-mono text-[10px] text-grey-100/60 z-50">
