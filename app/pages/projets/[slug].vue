@@ -234,19 +234,31 @@ onMounted(() => {
               <p class="text-sm text-grey-100 leading-relaxed font-inter">{{ project.architecture }}</p>
             </div>
 
-            <div class="pt-8 border-t border-white/5">
-              <AppButton theme="glowing" class="w-full" icon="arrow-right">Discuter du projet</AppButton>
+            <div class="pt-8 border-t border-white/5 space-y-4">
+              <AppButton
+                  v-if="project.url"
+                  :to="project.url"
+                  target="_blank"
+                  external
+                  theme="glowing"
+                  class="w-full"
+                  icon="external-link"
+              >
+                Visiter le site
+              </AppButton>
+
+              <AppButton theme="ghost" class="w-full" icon="arrow-right">Discuter du projet</AppButton>
             </div>
           </div>
 
           <div v-if="nextProject" class="px-8 space-y-4">
             <h2 class="text-xs uppercase tracking-widest text-grey-100">Projet suivant</h2>
-            <NuxtLink :to="`/projets/${nextProject.slug}`" class="group block">
+            <nuxt-link :to="`/projets/${nextProject.slug}`" class="group block">
               <p class="text-white-100 group-hover:text-accent transition-colors font-space-grotesk text-lg">
                 {{ nextProject.name }}
               </p>
               <p class="text-sm text-grey-300">{{ nextProject.type }}</p>
-            </NuxtLink>
+            </nuxt-link>
           </div>
         </aside>
 
