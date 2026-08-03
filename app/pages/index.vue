@@ -142,6 +142,14 @@ onMounted(() => {
     })
   })
 })
+
+// ─────────────────────────────────────────────
+// SEO
+// ─────────────────────────────────────────────
+useSeoMeta({
+  title: 'Valentin Yerna — Développeur Full-Stack Nuxt & Directus',
+  description: 'Valentin Yerna, développeur full-stack à Namur : je conçois des applications web complètes avec Nuxt, Directus et TypeScript. Découvrez mes projets et contactez-moi.'
+})
 </script>
 
 <template>

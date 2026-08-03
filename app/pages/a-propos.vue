@@ -74,6 +74,14 @@ onMounted(() => {
     })
   })
 })
+
+// ─────────────────────────────────────────────
+// SEO
+// ─────────────────────────────────────────────
+useSeoMeta({
+  title: 'À propos — Valentin Yerna, Développeur Full-Stack',
+  description: "Développeur full-stack basé en Belgique, spécialisé Nuxt et Directus. Découvrez mon parcours, ma stack technique et ma méthode de travail. Disponible immédiatement.",
+})
 </script>
 
 <template>

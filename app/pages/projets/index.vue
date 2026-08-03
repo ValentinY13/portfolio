@@ -95,6 +95,14 @@ const onListMouseMove = (e: MouseEvent) => {
   xTo(e.clientX)
   yTo(e.clientY)
 }
+
+// ─────────────────────────────────────────────
+// SEO
+// ─────────────────────────────────────────────
+useSeoMeta({
+  title: 'Projets web Nuxt & Directus — Valentin Yerna',
+  description: "5 projets web livrés en un an d'agence : backoffice Directus, frontend Nuxt, intégrations ERP et vidéo. Pour chacun : problème client, stack choisie, solution livrée.",
+})
 </script>
 
 <template>
