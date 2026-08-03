@@ -109,14 +109,12 @@ onMounted(() => {
     <!-- Header Documentation Style -->
     <header class="responsive-padding-x responsive-padding-t--large responsive-padding-b border-b border-white/5">
       <div class="project-header responsive-layout">
-        <nav class="flex items-center gap-2 text-sm font-jetbrains-mono text-grey-100 mb-6" aria-label="Breadcrumb">
-          <nuxt-link to="/" aria-label="Accueil" class="hover:text-accent transition-colors">~</nuxt-link>
-          <span aria-hidden="true">/</span>
-          <nuxt-link to="/projets" aria-label="Projets" class="hover:text-accent transition-colors">projets</nuxt-link>
-          <span aria-hidden="true">/</span>
-          <span class="text-accent truncate max-w-[16rem] md:max-w-none">{{ route.params.slug }}</span>
-          <span class="text-accent animate-pulse" aria-hidden="true">_</span>
-        </nav>
+        <Breadcrumb
+            :items="[
+              { label: 'projets', to: '/projets' },
+              { label: route.params.slug as string }
+            ]"
+        />
 
         <h1 class="text-h1 font-semibold mb-4 text-white-100">
           {{ project.title }}
