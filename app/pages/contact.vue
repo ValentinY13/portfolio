@@ -34,29 +34,33 @@ onMounted(() => {
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
 
       tl.from('.page-header > *', {
         opacity: 0,
         y: 24,
-        duration: 0.6,
-        stagger: 0.08
+        duration: 0.5,
+        stagger: 0.06
       })
+
+      tl.addLabel('cards', '<0.3')
 
       tl.from('.contact-card', {
         opacity: 0,
         y: 32,
-        duration: 0.8,
-        stagger: 0.1,
-        clearProps: 'all'
-      }, '-=0.4')
+        duration: 0.6,
+        stagger: 0.08,
+        clearProps: 'transform,opacity'
+      }, 'cards')
+
+      tl.addLabel('decorative', '>-0.2')
 
       tl.from('.decorative-element', {
         opacity: 0,
         scale: 0.9,
-        duration: 1,
+        duration: 0.8,
         ease: 'expo.out'
-      }, '-=0.6')
+      }, 'decorative')
     })
   })
 })

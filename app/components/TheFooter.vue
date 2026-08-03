@@ -38,7 +38,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <footer ref="footerRef" class="relative z-10 border-t border-white/5 bg-black-100 overflow-hidden">
+  <footer ref="footerRef" class="relative z-10 border-t border-white/5 bg-black-100/20 overflow-hidden">
 
     <div class="responsive-padding-x responsive-padding-y">
       <div class="responsive-layout">
