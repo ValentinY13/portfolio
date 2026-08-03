@@ -75,15 +75,16 @@ onMounted(() => {
             :key="`${logo.alt}-${i}`"
             class="w-50 py-6"
         >
-            <img
+          <div class="group flex items-center justify-center rounded-xl px-4 py-3 transition-all duration-500 hover:scale-105 hover:bg-white">
+            <nuxt-img
                 :src="logo.src"
                 :alt="logo.alt"
-                class="h-8 w-full grayscale hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                class="h-8 w-full grayscale group-hover:grayscale-0"
             />
+          </div>
         </swiper-slide>
       </swiper-container>
     </div>
-
   </section>
 </template>
 
