@@ -9,11 +9,12 @@ const commands = [
 
 const technos = [
   {src: "/svg/technos/nuxt.svg", alt: "nuxt"},
+  {src: "/svg/technos/typescript.svg", alt: "typescript"},
   {src: "/svg/technos/directus.svg", alt: "directus"},
   {src: "/svg/technos/tailwind.svg", alt: "tailwind"},
+  {src: "/svg/technos/github.svg", alt: "github"},
   {src: "/svg/technos/gsap.svg", alt: "gsap"},
   {src: "/svg/technos/docker.svg", alt: "docker"},
-  {src: "/svg/technos/github.svg", alt: "github"},
   {src: "/svg/technos/figma.svg", alt: "figma"},
 ]
 
