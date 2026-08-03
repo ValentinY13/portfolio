@@ -6,6 +6,7 @@ useHead({
     { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/SpaceGrotesk-SemiBold.woff2', crossorigin: 'anonymous' },
     { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/SpaceGrotesk-Regular.woff2', crossorigin: 'anonymous' },
     { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/Inter-Regular.woff2', crossorigin: 'anonymous' },
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
   ]
 })
 

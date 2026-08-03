@@ -60,6 +60,14 @@ onMounted(() => {
     })
   })
 })
+
+// ─────────────────────────────────────────────
+// SEO
+// ─────────────────────────────────────────────
+useSeoMeta({
+  title: 'Contact — Valentin Yerna, Développeur Full-Stack',
+  description: "Contactez Valentin Yerna, développeur full-stack basé à Namur : mail, LinkedIn ou GitHub. Disponible immédiatement, en présentiel ou remote.",
+})
 </script>
 
 <template>
