@@ -101,8 +101,8 @@ watch(isActive, (val) => {
   >
     <div class="mx-auto px-6 h-16 flex items-center justify-between">
       <!-- Logo / Name -->
-      <nuxt-link to="/" class="font-jetbrains-mono text-white text-lg font-semibold group" @click="closeMenu">
-        <span class="text-accent">Valentin</span>.Yerna<span class="animate-pulse">_</span>
+      <nuxt-link to="/" class="text-white text-h4 font-semibold group" @click="closeMenu">
+        Valentin<span class="text-accent italic">.Yerna</span> <span class="animate-pulse">_</span>
       </nuxt-link>
 
       <!-- Desktop Nav -->

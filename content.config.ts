@@ -34,6 +34,7 @@ export default defineContentConfig({
                     alt: z.string(),
                     caption: z.string()
                 })),
+                url: z.string().optional(),
                 next_project: z.string().optional()
             })
         })

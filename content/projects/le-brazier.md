@@ -48,5 +48,6 @@ images:
   - src: "/img/projects/le-brazier/le-brazier-guide-des-viandes.jpg"
     alt: "Guide des viandes côté front"
     caption: "Contenu produit détaillé par pièce de viande"
+url: "https://www.lebrazier.be/"
 next_project: "gintlemen"
 ---

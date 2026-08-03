@@ -47,5 +47,6 @@ images:
   - src: "/img/projects/maison-rorive/client-space.jpg"
     alt: "Espace client — historique de commandes"
     caption: "Historique, duplication de commande et factures PDF"
+url: "https://www.maisonrorive.be/fr"
 next_project: "le-brazier"
 ---

@@ -47,5 +47,6 @@ images:
   - src: "/img/projects/gintlemen/gintlemen-filtres.jpg"
     alt: "Système de filtres par tags sur la page Réalisations"
     caption: "Filtrage multi-tags avec recherche par nom"
+url: "https://www.gintlemen.be/"
 next_project: "review-extension"
 ---

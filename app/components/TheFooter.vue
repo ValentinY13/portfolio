@@ -47,7 +47,7 @@ onMounted(() => {
           <!-- Brand / Info -->
           <div class="footer-reveal lg:col-span-2">
             <nuxt-link to="/" class="inline-block group mb-6">
-              <span class="text-h3 font-space-grotesk font-bold text-white-100 group-hover:text-accent transition-colors">
+              <span class="text-h3 font-semibold text-white-100 group-hover:text-accent transition-colors">
                 Valentin<span class="text-accent italic">.Yerna</span>
               </span>
             </nuxt-link>
@@ -57,7 +57,7 @@ onMounted(() => {
               des architectures robustes et des interfaces performantes.
             </p>
             <div class="flex items-center gap-4">
-              <a 
+              <nuxt-link
                 v-for="social in socialLinks" 
                 :key="social.name"
                 :href="social.url"
@@ -68,7 +68,7 @@ onMounted(() => {
               >
                 <i :class="`icon icon-${social.icon} text-lg`" aria-hidden="true" />
                 <span class="sr-only">{{ social.name }}</span>
-              </a>
+              </nuxt-link>
             </div>
           </div>
 
@@ -78,8 +78,9 @@ onMounted(() => {
             <ul class="space-y-4">
               <li v-for="link in navLinks" :key="link.name">
                 <nuxt-link
-                  :to="link.to" 
-                  class="text-sm text-grey-100 hover:text-accent transition-colors font-inter flex items-center group"
+                  :to="link.to"
+                  :title="link.name"
+                  class="text-sm w-fit text-grey-100 hover:text-accent transition-colors font-inter flex items-center group"
                 >
                   <span class="w-0 group-hover:w-4 overflow-hidden transition-all duration-300 text-accent font-jetbrains-mono text-xs">/</span>
                   {{ link.name }}
@@ -91,7 +92,7 @@ onMounted(() => {
           <!-- Availability / Status -->
           <div class="footer-reveal">
             <h2 class="text-xs uppercase tracking-widest text-white-100 font-jetbrains-mono mb-6">Status</h2>
-            <div class="p-6 rounded-xl border border-white/5 bg-white/1 space-y-4">
+            <div class="min-w-60 p-6 rounded-xl border border-white/5 bg-white/1 space-y-4">
               <div class="flex items-center gap-3">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
