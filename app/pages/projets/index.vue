@@ -108,7 +108,7 @@ useSeoMeta({
 <template>
   <main
       ref="containerRef"
-      class="bg-black-100 text-grey-100 font-jetbrains-mono overflow-x-hidden"
+      class="text-grey-100 font-jetbrains-mono overflow-x-hidden"
   >
     <div class="responsive-padding-x responsive-padding-y">
 
