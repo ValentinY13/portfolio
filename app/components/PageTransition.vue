@@ -2,8 +2,8 @@
 const { gsap } = useGsap()
 const container = ref<HTMLElement | null>(null)
 
-// Grille de cellules carrées : 30 colonnes fixes, autant de lignes que
-const columns = 30
+// Grille de cellules carrées : 20 colonnes fixes, autant de lignes que
+const columns = 20
 const rows = ref(0)
 const cells = ref(0)
 

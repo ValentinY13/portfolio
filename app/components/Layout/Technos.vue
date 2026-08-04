@@ -79,6 +79,9 @@ onMounted(() => {
             <nuxt-img
                 :src="logo.src"
                 :alt="logo.alt"
+                width="200"
+                height="50"
+                loading="lazy"
                 class="h-8 w-full grayscale group-hover:grayscale-0"
             />
           </div>
