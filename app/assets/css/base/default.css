@@ -2,33 +2,35 @@
 
     body {
         --_background-color: var(--color-black-100);
-        background-color: var(--_background-color);
-        @apply transition-[background] duration-1000 ease-in-out;
-
-        /* Grille de base (très sombre) */
-        background-image:
-                linear-gradient(to right, oklch(0.985 0 89.876 / 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, oklch(0.985 0 89.876 / 0.02) 1px, transparent 1px);
-        background-size: 40px 40px;
-        background-attachment: fixed;
+        @apply transition-[background] bg-black-100 duration-1000 ease-in-out text-white font-inter;
         position: relative;
-
-        @apply text-white font-inter;
     }
 
-    body::after {
+    /* COUCHE 1 : Le Fond et la Grille sombre */
+    body::before {
         content: "";
         position: fixed;
         inset: 0;
         z-index: 0;
         pointer-events: none;
         background-image:
-                linear-gradient(to right, oklch(0.705 0.169 153.567 / 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, oklch(0.705 0.169 153.567 / 0.15) 1px, transparent 1px);
+                linear-gradient(to right, color-mix(in oklch, var(--color-white-100), transparent 98%) 1px, transparent 1px),
+                linear-gradient(to bottom, color-mix(in oklch, var(--color-white-100), transparent 98%) 1px, transparent 1px);
         background-size: 40px 40px;
-        background-attachment: fixed;
+    }
 
-        /* Spotlight */
+    /* COUCHE 2 : La Grille Accent */
+    body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background-image:
+                linear-gradient(to right, color-mix(in oklch, var(--color-accent), transparent 85%) 1px, transparent 1px),
+                linear-gradient(to bottom, color-mix(in oklch, var(--color-accent), transparent 85%) 1px, transparent 1px);
+        background-size: 40px 40px;
+
         mask-image: radial-gradient(
                 circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
                 black 0%,
@@ -41,34 +43,14 @@
         );
     }
 
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: radial-gradient(circle at 50% 50%, oklch(0.705 0.169 153.567 / 0.05) 0%, transparent 70%);
-        pointer-events: none;
-        z-index: -1;
-    }
-
-    /*path {
-        fill: currentColor;
-    }*/
     p + ul,
     ul + p,
     p + p {
         @apply mt-2
     }
 
-    address {
-        @apply not-italic;
-    }
-
     b, strong {
         @apply font-semibold;
-    }
-
-    [type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
-        outline: none;
     }
 
     textarea {
@@ -76,13 +58,6 @@
     }
 
     ::selection {
-        @apply bg-(--color-accent) text-(--color-black-100);
-    }
-
-    /* Allow color transition */
-    @property --theme-fluid-color {
-        syntax: '<color>';
-        initial-value: transparent;
-        inherits: true;
+        @apply bg-accent text-black-100;
     }
 }
