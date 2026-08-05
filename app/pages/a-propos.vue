@@ -8,13 +8,13 @@ const experiences = [
     period: 'Fév. 2025 - Sept. 2026',
     role: 'Développeur Full-Stack',
     company: 'Gintlemen Agency — Namur',
-    description: 'Premier employé de l\'agence, au sein d\'une équipe de trois. Analyse des besoins clients, puis conception et développement d\'applications Nuxt & Directus de bout en bout.'
+    description: 'Premier employé de l\'agence, au sein d\'une équipe de trois personnes. Analyse des besoins clients, puis conception et développement d\'applications Nuxt & Directus de bout en bout.'
   },
   {
     period: 'Fév. 2025 - Fév. 2026',
     role: 'Stage, PFI puis CDD/CDI',
     company: 'Gintlemen Agency — Évolution interne',
-    description: 'Entré en stage de fin d\'études, embauché en CDI un an plus tard. Montée en autonomie progressive jusqu\'à la prise en charge complète de projets clients.'
+    description: 'Débuté comme stagiaire (stage de fin d’études), engagé sous PFI puis sous en CDD et ensuite embauché sous CDI. Montée en autonomie progressive jusqu\'à la prise en charge complète de projets clients.'
   }
 ]
 
@@ -182,7 +182,14 @@ useSeoMeta({
                     {{ group.category }}
                   </h3>
                   <div class="flex flex-wrap gap-2">
-                    <Chip v-for="skill in group.skills" :key="skill" with-border size="small" hoverable>
+                    <Chip
+                        v-for="skill in group.skills"
+                        :key="skill"
+                        theme="accent"
+                        variant="tonal"
+                        with-border
+                        size="small"
+                        hoverable>
                       {{ skill }}
                     </Chip>
                   </div>
@@ -231,7 +238,7 @@ useSeoMeta({
                   <div aria-hidden="true" class="absolute -left-1.25 top-0 w-2.5 h-2.5 rounded-full border-2 border-black-100 bg-accent" />
                   <span class="block text-[10px] text-accent mb-1 uppercase tracking-wider font-jetbrains-mono">{{ exp.period }}</span>
                   <h3 class="text-white-100 font-medium mb-1">{{ exp.role }}</h3>
-                  <p class="text-xs text-grey-300 mb-2">{{ exp.company }}</p>
+                  <p class="text-xs text-grey-100 mb-2">{{ exp.company }}</p>
                   <p class="text-sm text-grey-100 leading-relaxed font-inter">{{ exp.description }}</p>
                 </div>
               </div>
@@ -248,10 +255,10 @@ useSeoMeta({
               </h2>
               <div class="space-y-6">
                 <div v-for="edu in education" :key="edu.degree" class="relative pl-6 border-l border-white/10">
-                  <div class="absolute -left-[5.5px] top-0 w-2.5 h-2.5 rounded-full border-2 border-black-100 bg-grey-500" />
+                  <div class="absolute left-[-5.5px] top-0 size-2.5 rounded-full border-2 border-black-100 bg-accent" />
                   <time class="block text-[10px] text-accent mb-1 uppercase tracking-wider font-jetbrains-mono">{{ edu.period }}</time>
                   <h3 class="text-white-100 font-medium mb-1 text-sm">{{ edu.degree }}</h3>
-                  <p class="text-xs text-grey-300 mb-1">{{ edu.school }}</p>
+                  <p class="text-xs text-grey-100 mb-1">{{ edu.school }}</p>
                   <p v-if="edu.detail" class="text-xs text-grey-100 font-inter">{{ edu.detail }}</p>
                 </div>
               </div>

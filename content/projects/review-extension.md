@@ -47,5 +47,5 @@ images:
   - src: "/img/projects/review/review-directus.jpg"
     alt: "Fiche client dans le backoffice Directus"
     caption: "Centralisation des avis et statuts dans Directus"
-next_project: "mux-extension"
+next_project: "gintlemen"
 ---
