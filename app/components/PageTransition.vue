@@ -30,7 +30,7 @@ const isMobile = useMediaQuery('(max-width: 767px)')
 const onEnter = (el: HTMLElement, done: () => void) => {
   if (reducedMotion.value) return done()
 
-  const tl = gsap.timeline({ onComplete: done })
+  const tl = gsap.timeline({ onComplete: () => { gsap.set(el, { clearProps: "all" }); done(); } })
 
   // grid: [rows, columns]
   tl.to(getCells()!, {
