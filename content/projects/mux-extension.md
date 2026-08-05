@@ -33,7 +33,7 @@ sections:
 results:
   challenge: "Concevoir l'intégration Mux dans Directus sans documentation ni exemple existant, en structurant seul les données et la logique métier, tout en gérant l'asynchronisme."
   outcome: "N'importe qui dans l'équipe peut désormais uploader et paramétrer une vidéo sans intervention technique. Zéro stockage sur serveur, zéro surcharge d'infrastructure."
-preview_image: "/img/projects/mux-extension-preview.jpg"
+preview_image: "/img/projects/mux-preview.jpg"
 images:
   - src: "/img/projects/mux/mux-ux-extension.jpg"
     alt: "Formulaire d'upload drag & drop"
