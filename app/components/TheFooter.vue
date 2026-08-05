@@ -11,7 +11,7 @@ const navLinks = [
 ]
 
 const socialLinks = [
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/valentinyerna/', icon: 'linkedin' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/valentin-yerna-3063a338b/', icon: 'linkedin' },
   { name: 'GitHub', url: 'https://github.com/ValentinY13', icon: 'github' }
 ]
 

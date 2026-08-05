@@ -154,10 +154,19 @@ watch(isActive, (val) => {
         <p class="font-jetbrains-mono text-[10px] text-grey-300 mb-4 uppercase tracking-widest">// Socials</p>
         <ul class="flex gap-6">
           <li>
-            <nuxt-link to="/" class="text-white hover:text-accent transition-colors font-jetbrains-mono text-sm">GitHub</nuxt-link>
+            <nuxt-link
+                to="https://github.com/ValentinY13"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white hover:text-accent transition-colors font-jetbrains-mono text-sm">
+              GitHub
+            </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/" class="text-white hover:text-accent transition-colors font-jetbrains-mono text-sm">LinkedIn</nuxt-link>
+            <nuxt-link to="https://www.linkedin.com/in/valentin-yerna-3063a338b/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="text-white hover:text-accent transition-colors font-jetbrains-mono text-sm">LinkedIn</nuxt-link>
           </li>
         </ul>
       </div>

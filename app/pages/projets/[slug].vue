@@ -247,7 +247,14 @@ onMounted(() => {
                 Visiter le site
               </AppButton>
 
-              <AppButton theme="ghost" class="w-full" icon="arrow-right">Discuter du projet</AppButton>
+              <AppButton
+                  to="/contact"
+                  title="Discuter du projet"
+                  theme="ghost"
+                  class="w-full"
+                  icon="arrow-right">
+                Discuter du projet
+              </AppButton>
             </div>
           </div>
 
