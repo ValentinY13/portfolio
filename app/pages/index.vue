@@ -182,7 +182,7 @@ useSeoMeta({
           <!-- CTA -->
           <div class="stagger-block flex flex-col sm:flex-row gap-4 mb-16">
             <AppButton to="/projets" icon="arrow-right">Voir mes projets</AppButton>
-            <AppButton to="/contact" theme="ghost">Me contacter</AppButton>
+            <AppButton to="/CV_Valentin_Yerna.pdf" target="_blank" theme="ghost">Télécharger mon CV</AppButton>
           </div>
         </div>
 

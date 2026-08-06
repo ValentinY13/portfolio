@@ -153,13 +153,13 @@ useSeoMeta({
                      <p class="text-grey-100 text-sm">En recherche d'un poste full-stack. Disponible rapidement.</p>
                    </div>
                  </li>
-                 <li class="flex gap-4">
-                   <span aria-hidden="true" class="text-accent font-jetbrains-mono text-sm mt-1 opacity-50">03.</span>
-                   <div>
-                     <p class="text-white-100 font-medium mb-1">CV</p>
-                     <p class="text-grey-100 text-sm">Version PDF complète disponible <span class="underline underline-offset-2 text-accent decoration-accent">ici</span>.</p>
-                   </div>
-                 </li>
+                <li class="flex gap-4">
+                  <span aria-hidden="true" class="text-accent font-jetbrains-mono text-sm mt-1 opacity-50">03.</span>
+                  <div>
+                    <p class="text-white-100 font-medium mb-1">CV</p>
+                    <p class="text-grey-100 text-sm">Version PDF complète disponible <a href="/CV_Valentin_Yerna.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 text-accent decoration-accent hover:text-white-100 transition-colors">ici</a>.</p>
+                  </div>
+                </li>
                </ul>
              </div>
           </div>
