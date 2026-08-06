@@ -271,9 +271,13 @@ useSeoMeta({
                 <span lang="fr" aria-label="Langue française native">FR natif</span> · 
                 <span lang="en" aria-label="Langue anglaise technique">EN technique</span>
               </p>
-              <AppButton to="/contact" icon="arrow-right" size="small" aria-label="Me contacter pour discuter ensemble">
-                Discuter ensemble
-              </AppButton>
+              <div class="flex flex-wrap gap-4">
+                <AppButton to="/contact" icon="arrow-right" size="small" aria-label="Me contacter pour discuter ensemble">
+                  Discuter ensemble
+                </AppButton>
+
+                <AppButton to="/CV_Valentin_Yerna.pdf" size="small" target="_blank" theme="ghost">Télécharger mon CV</AppButton>
+              </div>
             </section>
           </aside>
 
