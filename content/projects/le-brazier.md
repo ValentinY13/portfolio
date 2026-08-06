@@ -49,5 +49,5 @@ images:
     alt: "Guide des viandes côté front"
     caption: "Contenu produit détaillé par pièce de viande"
 url: "https://www.lebrazier.be/"
-next_project: "gintlemen"
+next_project: "maison-rorive"
 ---

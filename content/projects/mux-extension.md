@@ -6,7 +6,7 @@ date: "2024"
 status: "Internal"
 slug: "mux-extension"
 description: "Intégration native de la gestion vidéo Mux au sein du CMS Directus, simplifiant le workflow de streaming."
-architecture: "Intégration API Mux via Webhooks Directus. Synchronisation d'état temps réel."
+architecture: "Intégration API Mux via Webhooks Directus. Synchronisation d'état en temps réel."
 stack:
   - name: "Directus"
     theme: "accent"
@@ -21,7 +21,7 @@ mission: "J'ai géré la totalité du projet en autonomie complète, sans superv
 sections:
   - title: "Frontend"
     items:
-      - "Module custom ajouté au menu Directus, avec deux vues type dashboard : formulaire d'upload (drag & drop) et bibliothèque vidéo."
+      - "Module custom ajouté au menu Directus, avec deux vues type dashboard : formulaire d'upload (drag & drop) et bibliothèque vidéos."
       - "Recherche par nom, prévisualisation en lecture directe, et gestion intelligente de la suppression (bloquée si liée à un bloc actif)."
       - "Interface de lecture vidéo custom basée sur les métadonnées Mux."
       - "Paramétrage contextuel par vidéo : couleurs, loop, autoplay, résolution."
@@ -33,7 +33,7 @@ sections:
 results:
   challenge: "Concevoir l'intégration Mux dans Directus sans documentation ni exemple existant, en structurant seul les données et la logique métier, tout en gérant l'asynchronisme."
   outcome: "N'importe qui dans l'équipe peut désormais uploader et paramétrer une vidéo sans intervention technique. Zéro stockage sur serveur, zéro surcharge d'infrastructure."
-preview_image: "/img/projects/mux-extension-preview.jpg"
+preview_image: "/img/projects/mux-preview.jpg"
 images:
   - src: "/img/projects/mux/mux-ux-extension.jpg"
     alt: "Formulaire d'upload drag & drop"
@@ -47,5 +47,5 @@ images:
   - src: "/img/projects/mux/mux-block-video.jpg"
     alt: "Rendu final sur le site Gintlemen"
     caption: "Résultat final intégré via le système de blocs"
-next_project: "maison-rorive"
+next_project: "review-extension"
 ---

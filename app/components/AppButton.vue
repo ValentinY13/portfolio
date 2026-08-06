@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from "#vue-router";
 
-const {theme = 'glowing', to, size, icon, disabled} = defineProps<{
+const {theme = 'glowing', to, size, icon, disabled, target} = defineProps<{
   theme?: 'glowing' | 'ghost'
   to?: RouteLocationRaw
   size?: 'small'
   icon?: string
   disabled?: boolean
+  target?: string
 }>()
 
 const { gsap, createCtx } = useGsap()
@@ -16,7 +17,16 @@ const spotlightRef = ref<HTMLElement | null>(null)
 
 // Logique de rendu dynamique
 const componentType = computed(() => to ? resolveComponent('NuxtLink') : 'button')
-const vBindProps = computed(() => to ? { to: to } : { disabled: disabled })
+const vBindProps = computed(() => {
+  if (to) {
+    return {
+      to: to,
+      target: target,
+      rel: target === '_blank' ? 'noopener noreferrer' : undefined
+    }
+  }
+  return { disabled: disabled }
+})
 
 const classes = computed(() => [
   'btn',

@@ -155,7 +155,7 @@ useSeoMeta({
                   <h2 class="text-h3 font-semibold text-white-100 transition-colors duration-300 group-hover:text-accent">
                     {{ project.title }}
                   </h2>
-                  <span class="text-xs text-grey-300 italic font-inter">
+                  <span class="text-xs text-grey-100/50 italic font-inter">
                 {{ project.type }}
               </span>
                 </div>
