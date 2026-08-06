@@ -188,7 +188,7 @@ useSeoMeta({
 
         <!-- Colonne droite : Code Preview -->
         <div class="stagger-block w-full max-w-150">
-          <CodePreview />
+          <StackFlow />
         </div>
       </div>
     </section>
