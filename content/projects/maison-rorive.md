@@ -17,7 +17,7 @@ stack:
   - name: "Pinia"
     theme: "white"
 context: "Maison Rorive, fournisseur de matières premières et de matériel pour artisans boulangers, pâtissiers et glaciers, avait besoin de digitaliser sa relation client tout en structurant un catalogue dense de plusieurs milliers de références."
-mission: "J'ai conçu le schéma de base de données Directus sur base du cahier des charges, développé l'intégralité du frontend depuis les maquettes Figma, et créé les collections d'édition de contenu, avec validation senior aux étapesclés."
+mission: "Dans le cadre de mon activité chez Gintlemen, j'ai conçu le schéma de base de données Directus sur base du cahier des charges, développé l'intégralité du frontend depuis les maquettes Figma, et créé les collections d'édition de contenu, avec validation senior aux étapes clés."
 sections:
   - title: "Frontend"
     items:

@@ -17,7 +17,7 @@ stack:
   - name: "Vue.js"
     theme: "white"
 context: "Directus ne proposait aucune solution native pour intégrer des vidéos sans les stocker directement sur le serveur, ce qui limitait notre capacité à proposer cette fonctionnalité aux clients. L'objectif était de permettre l'intégration de vidéos optimisées sur un site, sans surcharger l'infrastructure serveur."
-mission: "J'ai géré la totalité du projet en autonomie complète, sans supervision. Je me suis formé sur la documentation Mux, rédigé un cahier des charges définissant un MVP, puis fait évoluer l'extension par itérations successives."
+mission: "Réalisé au sein de l'agence Gintlemen, j'ai géré la totalité du projet en autonomie complète, sans supervision. Je me suis formé sur la documentation Mux, rédigé un cahier des charges définissant un MVP, puis fait évoluer l'extension par itérations successives."
 sections:
   - title: "Frontend"
     items:

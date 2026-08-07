@@ -17,7 +17,7 @@ stack:
   - name: "Zod"
     theme: "white"
 context: "Le Brazier, entreprise de grillades haut de gamme, souhaitait renforcer son identité de marque sur un marché concurrentiel. Le site historique, techniquement daté et difficile à maintenir, a été entièrement reconstruit pour gagner en contenu et en autonomie éditoriale via un backoffice Directus."
-mission: "J'ai développé le site V2 à partir d'un design Figma, sans cahier des charges — l'analyse fonctionnelle était à déduire directement des maquettes. J'ai conçu le schéma de base de données et les collections, avec carte blanche complète, tout en formant et supervisant un stagiaire."
+mission: "Réalisé au sein de l'agence Gintlemen, j'ai développé le site V2 à partir d'un design Figma, sans cahier des charges — l'analyse fonctionnelle était à déduire directement des maquettes. J'ai conçu le schéma de base de données et les collections, avec carte blanche complète, tout en formant et supervisant un stagiaire."
 sections:
   - title: "Frontend"
     items:

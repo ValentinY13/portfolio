@@ -17,7 +17,7 @@ stack:
   - name: "Mailgun"
     theme: "white"
 context: "L'objectif était de simplifier le processus de demande d'avis après une collaboration, en réduisant au maximum les étapes nécessaires pour qu'un client publie un avis Google. Le module est actuellement utilisé en interne chez Gintlemen."
-mission: "J'ai géré la totalité du projet, avec pour seul cadrage un document d'objectifs plutôt qu'un cahier des charges complet ainsi que d'une aide visuelle ponctuelle pour la conception du formulaire. La supervision reçue s'est limitée à la validation finale."
+mission: "Dans le cadre de mon activité chez Gintlemen, j'ai géré la totalité du projet, avec pour seul cadrage un document d'objectifs plutôt qu'un cahier des charges complet ainsi que d'une aide visuelle ponctuelle pour la conception du formulaire. La supervision reçue s'est limitée à la validation finale."
 sections:
   - title: "Frontend"
     items:
