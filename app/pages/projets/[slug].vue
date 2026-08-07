@@ -234,6 +234,13 @@ onMounted(() => {
               <p class="text-sm text-grey-100 leading-relaxed font-inter">{{ project.architecture }}</p>
             </div>
 
+            <div class="pt-8 border-t border-white/5">
+              <h2 class="text-xs uppercase tracking-widest text-white-100 mb-4">Contexte Pro</h2>
+              <p class="text-sm text-grey-100 leading-relaxed font-inter">
+                Projet réalisé en tant que développeur chez <strong>Gintlemen</strong>.
+              </p>
+            </div>
+
             <div class="pt-8 border-t border-white/5 space-y-4">
               <AppButton
                   v-if="project.url"
