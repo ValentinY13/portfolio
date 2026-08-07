@@ -17,7 +17,7 @@ stack:
   - name: "GSAP"
     theme: "white"
 context: "L'objectif était de refléter la maturité technique acquise par Gintlemen au fil des années, avec un site plus professionnel et une mise à jour technique complète depuis WordPress vers Nuxt et Directus. Le projet s'appuyait sur un design Figma ainsi que sur une longue phase d'analyse."
-mission: "J'ai conçu le schéma de base de données, puis développé le projet en grande partie seul, chaque étape étant discutée en interne pour valider les choix, avec l'appui ponctuel de mon senior sur certains aspects du développement."
+mission: "Dans le cadre de mon activité chez Gintlemen, j'ai conçu le schéma de base de données, puis développé le projet en grande partie seul, chaque étape étant discutée en interne pour valider les choix, avec l'appui ponctuel de mon senior sur certains aspects du développement."
 sections:
   - title: "Frontend"
     items:
