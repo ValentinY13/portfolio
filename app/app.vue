@@ -10,6 +10,19 @@ useHead({
   ]
 })
 
+useSeoMeta({
+  formatDetection: 'telephone=no',
+  themeColor: "#26bd6c",
+
+  ogTitle: 'Valentin Yerna — Développeur Full-Stack',
+  ogDescription: 'Développeur spécialisé Nuxt & Directus à Namur.',
+
+  ogImage: '/social-media.jpg',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+  ogImageType: 'image/jpeg',
+})
+
 const { initSpotlight } = useSpotlight()
 initSpotlight()
 
